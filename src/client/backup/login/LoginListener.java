@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import client.backup.main.Launcher;
+import client.common.packages.LoginPackage;
 import client.ui.LoginUI;
 
 public class LoginListener implements ActionListener{
@@ -26,7 +28,7 @@ public class LoginListener implements ActionListener{
 			p.setUserNameLength(username.length());
 			p.setPassWord(password.getBytes());
 			p.setPassWordLength(password.length());
-			
+			Launcher.sender.send(p);
 			
 		}
 		

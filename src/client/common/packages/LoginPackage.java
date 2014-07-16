@@ -1,12 +1,11 @@
-package client.backup.login;
+package client.common.packages;
 
-import client.common.Package;
 /**
  * 登陆数据包类
  * @author pc
  *
  */
-public class LoginPackage extends Package {
+public class LoginPackage implements IPackage {
 	private int UserNameLength;
 	private int PassWordLength;
 	private byte[] UserName;

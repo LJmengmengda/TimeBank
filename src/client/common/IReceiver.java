@@ -1,4 +1,8 @@
 package client.common;
+
+import client.common.packages.IPackage;
+
+
 /**
  * 通用的接受数据类的接口
  * @author pc
@@ -6,6 +10,6 @@ package client.common;
  */
 public interface IReceiver {
 	//解析并获得数据包的方法
-	public Package getPackage();
+	public IPackage getPackage();
 	
 }

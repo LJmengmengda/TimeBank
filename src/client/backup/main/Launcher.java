@@ -23,7 +23,7 @@ public class Launcher {
 	public static DataInputStream dins;
 	public static DataOutputStream dous;
 	public static Socket socket;
-	public static Sender sender;
+	public static Sender sender = new Sender();
 	
 	private LoginUI loginui;
 	//TODO 接收到包的操作
