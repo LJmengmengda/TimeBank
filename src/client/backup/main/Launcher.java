@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import client.common.IReceiver;
+import client.common.Receiver;
 import client.common.Sender;
 import client.ui.LoginUI;
 
@@ -25,7 +25,8 @@ public class Launcher {
 	public static Socket socket;
 	public static Sender sender = new Sender();
 	
-	private LoginUI loginui;
+	//所有界面
+	public LoginUI loginui;
 	//TODO 接收到包的操作
 	public void onReceivePackage(){
 		
@@ -41,8 +42,7 @@ public class Launcher {
 			dous = new DataOutputStream(ous);
 			dins = new DataInputStream(ins);
 			//启动接收线程
-			receiveThread rt = new receiveThread(this);
-			rt.start();
+			
 			return 1;
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
