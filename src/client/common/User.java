@@ -5,8 +5,9 @@ package client.common;
  *
  */
 public class User {
+	
 	private int ID;
-	private String name;
-	private String password;
+	private String userName;
+	private String passWord;
 	
 }

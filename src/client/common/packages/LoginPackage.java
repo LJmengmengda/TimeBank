@@ -5,37 +5,9 @@ package client.common.packages;
  * @author pc
  *
  */
-public class LoginPackage implements IPackage {
-	private int UserNameLength;
-	private int PassWordLength;
-	private byte[] UserName;
-	private byte[] PassWord;
-	public int getUserNameLength() {
-		return UserNameLength;
-	}
-	public void setUserNameLength(int userNameLength) {
-		UserNameLength = userNameLength;
-	}
-	public int getPassWordLength() {
-		return PassWordLength;
-	}
-	public void setPassWordLength(int passWordLength) {
-		PassWordLength = passWordLength;
-	}
-	public byte[] getUserName() {
-		return UserName;
-	}
-	public void setUserName(byte[] userName) {
-		UserName = userName;
-	}
-	public byte[] getPassWord() {
-		return PassWord;
-	}
-	public void setPassWord(byte[] passWord) {
-		PassWord = passWord;
-	}
-	
+public class LoginPackage extends Package {
 
-	
+	private String userName;
+	private String pwd;
 	
 }

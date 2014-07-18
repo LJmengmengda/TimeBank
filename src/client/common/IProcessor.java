@@ -1,8 +1,8 @@
 package client.common;
 
-import client.common.packages.IPackage;
+import client.common.packages.Package;
 
 public interface IProcessor {
 	//处理某消息包的方法
-	public void process(IPackage p);
+	public void process(Package p);
 }
