@@ -23,7 +23,7 @@ public class Receiver extends Thread{
 		while(true){
 			//循环等待接收数据包
 			try {
-				int type = Launcher.dins.readInt();
+				int type = Launcher.dins.readByte();
 				if(type == 1){
 					//TODO 得到接收的登录信息数据包
 					Package p = new LoginPackage();
