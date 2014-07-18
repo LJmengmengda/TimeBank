@@ -5,7 +5,7 @@ package client.common.packages;
  * @author pc
  *
  */
-public class LoginPackage extends Package {
+public class LoginPackage extends TBPackage {
 
 	private String userName;
 	private String pwd;

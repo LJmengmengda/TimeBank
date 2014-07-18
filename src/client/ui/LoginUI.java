@@ -13,7 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
 import client.backup.login.LoginListener;
-
+/**
+ * 登陆界面
+ * @author pc
+ *
+ */
 
 public class LoginUI extends JFrame{
 	

@@ -1,53 +1,55 @@
 package client.common;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
 import client.backup.main.Launcher;
-import client.common.packages.Package;
 import client.common.packages.LoginPackage;
+import client.common.packages.TBPackage;
+import client.common.packages.TypeConfig;
 
 /**
- * 用来发送信息的接口
+ * 用来发送信息的线程
  * @author pc
  *
  */
 
-public class Sender {
-	public DataInputStream dins;
-	public DataOutputStream dous;
-	public void init(){
-		try {
-			dins = new DataInputStream(Launcher.socket.getInputStream());
-			dous = new DataOutputStream(Launcher.socket.getOutputStream());
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+public class Sender extends Thread{
+	//消息队列
+	public static PackageList packagelist;
+	private DataOutputStream dios;//输出流
+	
+	//构造方法，传入输出流
+	public Sender(DataOutputStream dios){
+		this.dios = dios;
+	}
+	
+	//线程启动方法
+	public void run(){
+		while(true){
+			//TODO gitHead()改为节点数量？？？
+			if(packagelist.getHead() != null){
+				TBPackage p = packagelist.getHead().p;
+				this.send(p);
+			}
 		}
 	}
+	
 	//发送数据包的方法
-	public int send(Package p){
-		if(dous != null){
-			this.init();
-		}
-		if(p instanceof LoginPackage){
-			System.out.println("接收到了LoginPackage");
-			LoginPackage lp = (LoginPackage)p;
-//			try {
-//				dous.writeInt(lp.getUserNameLength());
-//				dous.writeInt(lp.getUserNameLength());
-//				dous.write(lp.getUserName());
-//				dous.write(lp.getPassWord());
-				//测试
-//				dous.writeInt(1);
-//				dous.writeInt(lp.getPassWordLength());
-//				dous.write(lp.getPassWord());
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+	public int send(TBPackage p){
+		//根据协议发送数据包
+		switch(p.getType()){
+		case TypeConfig.TYPE_LOGIN:
+			//TODO 按照协议发送登陆数据包
+			try {
+				dios.writeByte(TypeConfig.TYPE_LOGIN);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		
 		}
 		return 1;
 	}

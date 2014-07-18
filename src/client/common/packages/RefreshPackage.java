@@ -1,6 +1,6 @@
 package client.common.packages;
 
-public class RefreshPackage extends Package{
+public class RefreshPackage extends TBPackage{
 
 	
 }

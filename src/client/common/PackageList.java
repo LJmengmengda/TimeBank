@@ -1,5 +1,7 @@
 package client.common;
 
+import client.common.packages.TBPackage;
+
 public class PackageList {
 	private Node head;
 
@@ -19,7 +21,7 @@ public class PackageList {
 }
 //节点类
 class Node{
-	Package p;
+	TBPackage p;
 	Node next;
 }
 

@@ -8,7 +8,11 @@ import javax.swing.JFrame;
 import client.backup.main.Launcher;
 import client.common.packages.LoginPackage;
 import client.ui.LoginUI;
-
+/**
+ * 登录界面的监听器
+ * @author pc
+ *
+ */
 public class LoginListener implements ActionListener{
 	private LoginUI parent;
 	public LoginListener(LoginUI parent){
@@ -19,16 +23,8 @@ public class LoginListener implements ActionListener{
 		// TODO Auto-generated method stub
 		String com = e.getActionCommand();
 		if("登陆".equals(com)){
-//			System.out.println("点击了登陆按钮！");
-//			String username = "t1174779123";
-//			String password = parent.getPassWordField().getText();
-//			LoginPackage p = new LoginPackage();
-//			System.out.println("创建了数据包");
-//			p.setUserName(username.getBytes());
-//			p.setUserNameLength(username.length());
-//			p.setPassWord(password.getBytes());
-//			p.setPassWordLength(password.length());
-//			Launcher.sender.send(p);
+			//TODO　创建登陆数据包并加入消息队列
+			
 			
 		}
 		
