@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import client.backup.login.LoginProcessor;
 import client.backup.main.Launcher;
-import client.common.packages.IPackage;
+import client.common.packages.Package;
 import client.common.packages.LoginPackage;
 
 
@@ -23,10 +23,10 @@ public class Receiver extends Thread{
 		while(true){
 			//循环等待接收数据包
 			try {
-				int type = Launcher.dins.readInt();
+				int type = Launcher.dins.readByte();
 				if(type == 1){
 					//TODO 得到接收的登录信息数据包
-					IPackage p = new LoginPackage();
+					Package p = new LoginPackage();
 					//创建登陆数据包处理泪，并处理
 					int n = this.processors.size();
 					for (int i = 0; i < n; i++) {
