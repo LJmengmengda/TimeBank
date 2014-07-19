@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import client.backup.main.Launcher;
 import client.common.packages.LoginPackage;
-import client.common.packages.RequesPublishPackage;
+import client.common.packages.RequestPublishPackage;
 import client.common.packages.SignPackage;
 import client.common.packages.TBPackage;
 import client.common.packages.TypeConfig;
@@ -59,10 +59,10 @@ public class Sender extends Thread {
 				e.printStackTrace();
 			}
 			break;
-		case TypeConfig.TYPE_SIGN_UP:// 注册
+		case TypeConfig.TYPE_SIGNUP:// 注册
 			SignPackage sp = (SignPackage) p;
 			try {
-				dous.writeByte(TypeConfig.TYPE_SIGN_UP);
+				dous.writeByte(TypeConfig.TYPE_SIGNUP);
 				dous.writeInt(sp.getUserName().getBytes().length);
 				dous.write(sp.getUserName().getBytes());
 				dous.writeInt(sp.getPwd().getBytes().length);
@@ -76,7 +76,7 @@ public class Sender extends Thread {
 				e.printStackTrace();
 			}
 		case TypeConfig.TYPE_REQUEST_PUBLISH:// 发布请求
-			RequesPublishPackage rpp = (RequesPublishPackage) p;
+			RequestPublishPackage rpp = (RequestPublishPackage) p;
 			try {
 				dous.writeByte(TypeConfig.TYPE_REQUEST_PUBLISH);
 				dous.writeInt(rpp.getPublisherID());

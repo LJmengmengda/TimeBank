@@ -36,6 +36,8 @@ public class RequestPublishPackage extends TBPackage {
 		this.content = content;
 		this.cost = cost;
 		this.time = time;
+		
+		this.setType(TypeConfig.TYPE_REQUEST_PUBLISH);
 	}
 
 	public int getPublisherID() {

@@ -23,6 +23,8 @@ public class SignPackage extends TBPackage{
 		this.pwd = pwd;
 		this.nickName = nickName;
 		this.field = field;
+		
+		this.setType(TypeConfig.TYPE_SIGNUP);
 	}
 
 	public String getUserName() {

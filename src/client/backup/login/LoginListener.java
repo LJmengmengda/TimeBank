@@ -2,8 +2,10 @@ package client.backup.login;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 
+import client.backup.main.Launcher;
+import client.common.Sender;
+import client.common.packages.LoginPackage;
 import client.ui.LoginUI;
 
 /**
@@ -25,9 +27,18 @@ public class LoginListener implements ActionListener {
 		String com = e.getActionCommand();
 		if ("登陆".equals(com)) {
 			// TODO　创建登陆数据包并加入消息队列
-			System.out.println("aaaa");
+			LoginPackage loginPack = new LoginPackage((String)parent.getUserNameField().getSelectedItem(), 
+					new String(parent.getPassWordField().getPassword()));
+			
+			
+//			System.out.println(loginPack.getUserName());
+//			System.out.println(loginPack.getPwd());
+			
+			Sender.packagelist.add(loginPack);
+			
 			// 一段时间以后
-
+			
+			
 			// 成功
 			parent.dispose();
 			// 开启主界面
