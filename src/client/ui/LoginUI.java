@@ -23,15 +23,15 @@ import client.backup.login.LoginListener;
 
 public class LoginUI extends JFrame {
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		new LoginUI();
 	}
-
-	private JComboBox<String> UserNameField;
-	private JPasswordField PassWordField;
-	private JCheckBox RememberPWD;
-	private JLabel SignUp;
-	private JButton Login;
+	
+	private JComboBox<String> UserNameField;//用户名输入框
+	private JPasswordField PassWordField;//密码输入框
+	private JCheckBox RememberPWD;//记住密码
+	private JButton SignUp;//注册
+	private JButton Login;//登陆
 
 	public JComboBox<String> getUserNameField() {
 		return UserNameField;
@@ -57,24 +57,24 @@ public class LoginUI extends JFrame {
 		RememberPWD = rememberPWD;
 	}
 
-	public JLabel getSignUp() {
+	public JButton getSignUp() {
 		return SignUp;
 	}
 
-	public void setSignUp(JLabel signUp) {
+	public void setSignUp(JButton signUp) {
 		SignUp = signUp;
 	}
 
 	LoginListener loginListener;
 
-	public LoginUI() {
-		this.setSize(350, 600);
+	public LoginUI(){
+		this.setSize(350,600);
 		this.setTitle("时间银行");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setUndecorated(false);
 		this.setLayout(new BorderLayout());
-		this.setBackground();
+//		this.setBackground();
 
 		loginListener = new LoginListener(this);
 
@@ -102,8 +102,8 @@ public class LoginUI extends JFrame {
 		UserNameField.setEditable(true);
 		UserNameField.setPreferredSize(new Dimension(190, 25));
 
-		SignUp = new JLabel("注册");
 
+		
 		JLabel PassWord = new JLabel("密码");
 
 		PassWordField = new JPasswordField(17);
@@ -113,7 +113,7 @@ public class LoginUI extends JFrame {
 
 		centerPanel.add(UserName);
 		centerPanel.add(UserNameField);
-		centerPanel.add(SignUp);
+	
 		centerPanel.add(PassWord);
 		centerPanel.add(PassWordField);
 		centerPanel.add(RememberPWD);
@@ -146,18 +146,20 @@ public class LoginUI extends JFrame {
 	public JPanel createsouthPanel() {
 		JPanel southPanel = new JPanel();
 		southPanel.setPreferredSize(new Dimension(100, 47));
-		southPanel.setLayout(null);
 		southPanel.setOpaque(false);
 
+		SignUp = new JButton("注册");
 		Login = new JButton("登陆");
-
-		Login.setBounds(110, 0, 180, 34);
-		southPanel.add(Login);
-		Login.addActionListener(loginListener);
-		return southPanel;
+		
+	    southPanel.add(Login);
+	    Login.addActionListener(loginListener);
+	    southPanel.add(SignUp);
+	    
+	    return southPanel;
 	}
 
-	private void setBackground() {
+	
+	private void setBackground(){
 		ImageIcon image = new ImageIcon("images/background.jpg");
 		JLabel imageLabel = new JLabel(image);
 		imageLabel.setBounds(0, 0, this.getWidth(), this.getHeight());
