@@ -1,0 +1,11 @@
+完成了消息链表的编写，具体代码在client.common.PackageList
+所有功能需要发送消息给服务器就打包成相应数据包然后调用PackageList.add方法就行，发送由sender(唐梓毅写)来做
+
+完成了客户机发送给服务器的数据包各类
+client.common.packages下
+TBPackage类   所有Package类的父类，由于JAVA内部有Package类 为防止误调用，改名为TBPackage
+SignPackage类				注册数据包类
+LoginPackage类				登陆数据包类
+RequestPublicPackage类		需求发布数据包
+RequestReceivePackage类		需求接受数据包
+RefreshPackage类				刷新请求数据包
