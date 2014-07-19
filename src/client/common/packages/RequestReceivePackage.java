@@ -18,9 +18,11 @@ public class RequestReceivePackage extends TBPackage{
 	 * @param receiverID 接受者的ID
 	 */
 	public RequestReceivePackage(int requestID,String time,int receiverID){
-		this.requestID = this.requestID;
+		this.requestID = requestID;
 		this.receiverID = receiverID;
 		this.time = time;
+		
+		this.setType(TypeConfig.TYPE_REQUEST_RECEIVE);
 	}
 	
 	

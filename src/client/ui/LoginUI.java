@@ -3,6 +3,7 @@ package client.ui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -23,9 +24,9 @@ import client.backup.login.LoginListener;
 
 public class LoginUI extends JFrame {
 
-	public static void main(String[] args){
-		new LoginUI();
-	}
+//	public static void main(String[] args){
+//		new LoginUI();
+//	}
 	
 	private JComboBox<String> UserNameField;//用户名输入框
 	private JPasswordField PassWordField;//密码输入框

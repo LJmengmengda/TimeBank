@@ -16,8 +16,10 @@ public class LoginPackage extends TBPackage {
 	 * @param pwd 密码
 	 */
 	public LoginPackage(String userName,String pwd){
+		
 		this.userName = userName;
 		this.pwd = pwd;
+		this.setType(TypeConfig.TYPE_LOGIN);
 	}
 
 	
