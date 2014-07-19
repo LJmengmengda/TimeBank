@@ -28,8 +28,8 @@ public class Launcher {
 	public static Receiver receiver;
 	
 	//TODO 添加所有界面
-	public LoginUI loginui;
-	public SignupUI signupui;
+	static public LoginUI loginui;
+	static public SignupUI signupui;
 	
 	//TODO　添加更多状态变量
 	public static boolean iflogin;//是否登陆
@@ -47,6 +47,7 @@ public class Launcher {
 			
 			return 1;
 		} catch (UnknownHostException e) {
+			System.out.println("未连接到服务器");
 			e.printStackTrace();
 			return 0;
 		} catch (IOException e) {
