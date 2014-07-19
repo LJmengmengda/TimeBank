@@ -8,6 +8,7 @@ import client.backup.login.LoginProcessor;
 import client.backup.main.Launcher;
 import client.common.packages.TBPackage;
 import client.common.packages.LoginPackage;
+import client.common.packages.TypeConfig;
 
 
 /**
@@ -29,7 +30,7 @@ public class Receiver extends Thread{
 			//循环等待接收数据包
 			try {
 				int type = Launcher.dins.readByte();
-				if(type == 1){
+				if(type == TypeConfig.TYPE_LOGIN){
 					//TODO 得到接收的登录信息数据包
 //					TBPackage p = new LoginPackage();
 //					

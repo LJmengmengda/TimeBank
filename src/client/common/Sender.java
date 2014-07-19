@@ -17,11 +17,11 @@ import client.common.packages.TypeConfig;
 public class Sender extends Thread{
 	//消息队列
 	public static PackageList packagelist;
-	private DataOutputStream dios;//输出流
+	private DataOutputStream dous;//输出流
 	
 	//构造方法，传入输出流
-	public Sender(DataOutputStream dios){
-		this.dios = dios;
+	public Sender(DataOutputStream dous){
+		this.dous = dous;
 	}
 	
 	//线程启动方法
@@ -42,10 +42,9 @@ public class Sender extends Thread{
 		case TypeConfig.TYPE_LOGIN:
 			//TODO 按照协议发送登陆数据包
 			try {
-				dios.writeByte(TypeConfig.TYPE_LOGIN);
+				dous.writeByte(TypeConfig.TYPE_LOGIN);
 				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;
