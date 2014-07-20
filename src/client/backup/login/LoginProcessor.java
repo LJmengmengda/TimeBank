@@ -10,7 +10,6 @@ public class LoginProcessor implements IProcessor{
 	@Override
 	public void process(TBPackage p, DataOutputStream dos) {
 		
-		
 	}
 
 	

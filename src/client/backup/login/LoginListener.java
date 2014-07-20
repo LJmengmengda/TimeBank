@@ -40,7 +40,7 @@ public class LoginListener implements ActionListener {
 			
 			
 			// 成功
-			parent.dispose();
+//			parent.dispose();
 			// 开启主界面
 		}
 
