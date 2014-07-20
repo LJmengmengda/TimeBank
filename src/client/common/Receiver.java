@@ -31,7 +31,7 @@ public class Receiver extends Thread{
 			try {
 				int type = Launcher.dins.readByte();
 				if(type == TypeConfig.TYPE_LOGIN){
-					//TODO 得到接收的登录信息数据包
+//					//TODO 得到接收的登录信息数据包
 //					TBPackage p = new LoginPackage();
 //					
 //					
