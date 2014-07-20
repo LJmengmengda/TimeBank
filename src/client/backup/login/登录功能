@@ -1,0 +1,5 @@
+登陆流程简介（初稿）：
+
+1 点击登陆界面后，LoginListener获得用户输入的userName和passWord
+
+2 用userName和passWord创建LoginPackage对象，丢到消息队列中，让sender处理

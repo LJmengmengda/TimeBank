@@ -1,6 +1,15 @@
 package client.common.packages;
 
-public class RefreshPackage extends Package{
-
+/**
+ * 刷新数据包
+ * @author SSheng
+ *
+ */
+public class RefreshPackage extends TBPackage{
 	
+	//。。。。暂时没想到需要发什么  好想什么都不用发。。。
+	public RefreshPackage(){
+		this.setType(TypeConfig.TYPE_REFRESH);
+	}
+
 }

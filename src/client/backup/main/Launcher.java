@@ -11,10 +11,11 @@ import java.net.UnknownHostException;
 import client.common.Receiver;
 import client.common.Sender;
 import client.ui.LoginUI;
+import client.ui.SignupUI;
 
 /**
  * 启动客户机的类
- * @author pc
+ * @author 唐梓毅
  *
  */
 public class Launcher {
@@ -23,50 +24,54 @@ public class Launcher {
 	public static DataInputStream dins;
 	public static DataOutputStream dous;
 	public static Socket socket;
-	public static Sender sender = new Sender();
+	public static Sender sender;
+	public static Receiver receiver;
 	
-	//所有界面
-	public LoginUI loginui;
-	//TODO 接收到包的操作
-	public void onReceivePackage(){
-		
-	}
-	public static boolean iflogin;
+	//TODO 添加所有界面
+	static public LoginUI loginui;
+	static public SignupUI signupui;
+	
+	//TODO　添加更多状态变量
+	public static boolean iflogin;//是否登陆
+	
 	//连接到服务器的方法
 	public int connect2server(String ip, int port){
 		try {
+			//创建socket，得到IO流
 			socket = new Socket(ip,port);
 			System.out.println("创建了客户端，连接上了服务器");
 			ous = socket.getOutputStream();
 			ins = socket.getInputStream();
 			dous = new DataOutputStream(ous);
 			dins = new DataInputStream(ins);
-			//启动接收线程
 			
 			return 1;
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
+			System.out.println("未连接到服务器");
 			e.printStackTrace();
 			return 0;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return 0;
 		}
-		
 	}
-	//TODO 循环等待接收的方法
-	public void receive() throws IOException{
-		int type = dins.readInt();
-		
-		
+	//初始化sender和receiver的方法
+	public void initSenderAndReceiver(){
+		sender = new Sender(dous);
+		receiver = new Receiver(dins);
+		sender.start();
+		receiver.start();
 	}
 	
 	//主函数入口
 	public static void main(String[] args){
 		Launcher l = new Launcher();
+		//连接到服务器
 		if(l.connect2server("localhost", 8080) > 0){
-			l.loginui = new LoginUI();
+			//初始化sender与receiver
+			l.initSenderAndReceiver();
+			//弹出登录界面
+			loginui = new LoginUI();
 		}
 		
 	}

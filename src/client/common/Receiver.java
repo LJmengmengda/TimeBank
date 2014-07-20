@@ -1,12 +1,14 @@
 package client.common;
 
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import client.backup.login.LoginProcessor;
 import client.backup.main.Launcher;
-import client.common.packages.Package;
+import client.common.packages.TBPackage;
 import client.common.packages.LoginPackage;
+import client.common.packages.TypeConfig;
 
 
 /**
@@ -15,26 +17,32 @@ import client.common.packages.LoginPackage;
  *
  */
 public class Receiver extends Thread{
+	private DataInputStream dins;
 	//保存所有信息处理类的队列
 	private ArrayList<IProcessor> processors;
 	
-	//run
+	public Receiver(DataInputStream dins) {
+		this.dins = dins;
+	}
+	//启动线程方法
 	public void run(){
 		while(true){
 			//循环等待接收数据包
 			try {
 				int type = Launcher.dins.readByte();
-				if(type == 1){
+				if(type == TypeConfig.TYPE_LOGIN){
 					//TODO 得到接收的登录信息数据包
-					Package p = new LoginPackage();
-					//创建登陆数据包处理泪，并处理
-					int n = this.processors.size();
-					for (int i = 0; i < n; i++) {
-						IProcessor current = this.processors.get(i);
-						if(current instanceof LoginProcessor){
-							((LoginProcessor)current).process(p);
-						}
-					}
+//					TBPackage p = new LoginPackage();
+//					
+//					
+//					//创建登陆数据包处理类，并处理
+//					int n = this.processors.size();
+//					for (int i = 0; i < n; i++) {
+//						IProcessor current = this.processors.get(i);
+//						if(current instanceof LoginProcessor){
+//							((LoginProcessor)current).process(p);
+//						}
+//					}
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -42,6 +50,13 @@ public class Receiver extends Thread{
 			}
 		}
 	}
+	//添加所有的消息处理类的方法
+	public void addAllProcessors(){
+		this.addProcessor(new LoginProcessor());
+		//TODO 添加所有其他的Processor
+		
+	}
+	
 	//添加消息处理类的方法
 	public void addProcessor(IProcessor p){
 		this.processors.add(p);

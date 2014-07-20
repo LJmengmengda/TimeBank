@@ -1,0 +1,24 @@
+推荐博客：http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
+虽然是命令行的教程，但是对git的原理讲解的很清楚，对应的命令行操作在eclipse的右键菜单中基本都能够找到
+
+eclipse中的git教程：  http://blog.csdn.net/hhhccckkk/article/details/10458159
+
+
+eclipse中使用git基本操作：
+
+在工程上右键——team中执行
+
+1 commit：提交修改到本地，同时添加修改说明
+
+2 fetch from upstream （ remote——feach）：从远程库得到代码（可能需先pull）
+
+3 push to upstream（remote——push）：向远程库推送本地的修改
+
+4 switch to: 切换到不同的分支，new branch可以新建分支
+
+5 pull：获取远程库，检查不同
+
+6 merge：把当前分支与指定分支合并
+
+7 show in history: 查看历史修改，可在History视图中查看所有commit，并可通过右键——checkout回退至相应的版本
+
