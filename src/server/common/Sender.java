@@ -3,7 +3,7 @@ package server.common;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import server.common.packages.LoginResquestPackage;
+import server.common.packages.LoginRequestPackage;
 import server.common.packages.ServerPackage;
 
 public class Sender {
@@ -21,7 +21,6 @@ public class Sender {
 //			try {
 //				send();
 //			} catch (IOException e) {
-//				// TODO Auto-generated catch block
 //				e.printStackTrace();
 //			}
 		
@@ -31,7 +30,7 @@ public class Sender {
 		byte b=sp.getType();
 		if(b==0){
 			
-			LoginResquestPackage lo=(LoginResquestPackage)sp;
+			LoginRequestPackage lo=(LoginRequestPackage)sp;
 			dos.writeByte(b);
 			dos.writeInt(lo.getSrc());
 			dos.writeInt(lo.getDest());

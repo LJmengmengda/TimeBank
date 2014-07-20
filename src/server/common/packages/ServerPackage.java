@@ -2,8 +2,7 @@ package server.common.packages;
 
 
 ////��Ϣͷ
-public class ServerPackage {
-	
+public class ServerPackage{
 	////�ܳ���  4
 	private byte type;//��Ϣ����    1
 

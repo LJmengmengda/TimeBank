@@ -151,7 +151,6 @@ public class All_Recorder_Message {
 				con=DriverManager.getConnection(url, username, userpassword);
 				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

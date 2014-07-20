@@ -11,7 +11,7 @@ import java.net.Socket;
 
 import server.SQL.Client_Message;
 import server.backup.login.LoginProcessor;
-import server.common.packages.LoginResquestPackage;
+import server.common.packages.LoginRequestPackage;
 import server.common.packages.ServerPackage;
 import client.common.packages.LoginPackage;
 
@@ -47,7 +47,6 @@ public class Receiver extends Thread{
 				this.readAllMessage();
 				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 				

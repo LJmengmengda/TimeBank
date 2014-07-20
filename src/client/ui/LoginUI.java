@@ -24,54 +24,56 @@ import client.backup.login.LoginListener;
 
 public class LoginUI extends JFrame {
 
-//	public static void main(String[] args){
-//		new LoginUI();
-//	}
+	public static void main(String[] args){
+		new LoginUI();
+	}
 	
-	private JComboBox<String> UserNameField;//用户名输入框
-	private JPasswordField PassWordField;//密码输入框
-	private JCheckBox RememberPWD;//记住密码
-	private JButton SignUp;//注册
-	private JButton Login;//登陆
+	private JComboBox<String> userNameField;//用户名输入框
+	private JPasswordField passWordField;//密码输入框
+	private JCheckBox rememberPWD;//记住密码
+	private JButton signUp;//注册
+	private JButton login;//登陆
 
+	private LoginListener loginListener;
+	
 	public JComboBox<String> getUserNameField() {
-		return UserNameField;
+		return userNameField;
 	}
 
 	public void setUserNameField(JComboBox<String> userNameField) {
-		UserNameField = userNameField;
+		this.userNameField = userNameField;
 	}
 
 	public JPasswordField getPassWordField() {
-		return PassWordField;
+		return passWordField;
 	}
 
 	public void setPassWordField(JPasswordField passWordField) {
-		PassWordField = passWordField;
+		this.passWordField = passWordField;
 	}
 
 	public JCheckBox getRememberPWD() {
-		return RememberPWD;
+		return rememberPWD;
 	}
 
 	public void setRememberPWD(JCheckBox rememberPWD) {
-		RememberPWD = rememberPWD;
+		this.rememberPWD = rememberPWD;
 	}
 
 	public JButton getSignUp() {
-		return SignUp;
+		return signUp;
 	}
 
 	public void setSignUp(JButton signUp) {
-		SignUp = signUp;
+		this.signUp = signUp;
 	}
 
-	LoginListener loginListener;
+
 
 	public LoginUI(){
 		this.setSize(350,600);
 		this.setTitle("时间银行");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setUndecorated(false);
 		this.setLayout(new BorderLayout());
@@ -99,25 +101,25 @@ public class LoginUI extends JFrame {
 
 		JLabel UserName = new JLabel("用户名");
 
-		UserNameField = new JComboBox<String>();
-		UserNameField.setEditable(true);
-		UserNameField.setPreferredSize(new Dimension(190, 25));
+		userNameField = new JComboBox<String>();
+		userNameField.setEditable(true);
+		userNameField.setPreferredSize(new Dimension(190, 25));
 
 
 		
 		JLabel PassWord = new JLabel("密码");
 
-		PassWordField = new JPasswordField(17);
+		passWordField = new JPasswordField(17);
 
-		RememberPWD = new JCheckBox("记住密码");
-		RememberPWD.setOpaque(false);
+		rememberPWD = new JCheckBox("记住密码");
+		rememberPWD.setOpaque(false);
 
 		centerPanel.add(UserName);
-		centerPanel.add(UserNameField);
+		centerPanel.add(userNameField);
 	
 		centerPanel.add(PassWord);
-		centerPanel.add(PassWordField);
-		centerPanel.add(RememberPWD);
+		centerPanel.add(passWordField);
+		centerPanel.add(rememberPWD);
 		centerPanel.setOpaque(false);
 
 		return centerPanel;
@@ -149,12 +151,13 @@ public class LoginUI extends JFrame {
 		southPanel.setPreferredSize(new Dimension(100, 47));
 		southPanel.setOpaque(false);
 
-		SignUp = new JButton("注册");
-		Login = new JButton("登陆");
+		signUp = new JButton("注册");
+		login = new JButton("登陆");
 		
-	    southPanel.add(Login);
-	    Login.addActionListener(loginListener);
-	    southPanel.add(SignUp);
+	    southPanel.add(login);
+	    login.addActionListener(loginListener);
+	    southPanel.add(signUp);
+	    signUp.addActionListener(loginListener);
 	    
 	    return southPanel;
 	}

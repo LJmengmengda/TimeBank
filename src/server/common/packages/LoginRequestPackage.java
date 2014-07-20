@@ -1,14 +1,19 @@
 package server.common.packages;
+import org.omg.CORBA.TypeCode;
 
-public class LoginResquestPackage extends ServerPackage{
+public class LoginRequestPackage extends ServerPackage{
 	
-	public LoginResquestPackage(int src, byte state) {
-		super();
-		this.srcnum = src;
-		this.state = state;
-	}
+	
 	private int srcnum; 
 	private byte state;
+	
+	public LoginRequestPackage(int src, byte state) {
+		this.srcnum = src;
+		this.state = state;
+		
+		this.setType(ServerConfig.LOGIN_REQUEST);
+	}
+	
 	public int getSrcnum() {
 		return srcnum;
 	}
