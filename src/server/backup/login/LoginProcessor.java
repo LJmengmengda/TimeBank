@@ -5,8 +5,8 @@ import java.io.DataOutputStream;
 import server.SQL.Client_Message;
 import server.common.IProcessor;
 import server.common.Sender;
-import sever.common.packages.LoginResquestPackage;
-import sever.common.packages.ServerPackage;
+import server.common.packages.LoginResquestPackage;
+import server.common.packages.ServerPackage;
 import client.common.packages.LoginPackage;
 import client.common.packages.TBPackage;
 

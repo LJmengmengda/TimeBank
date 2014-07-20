@@ -3,8 +3,8 @@ package server.common;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import sever.common.packages.LoginResquestPackage;
-import sever.common.packages.ServerPackage;
+import server.common.packages.LoginResquestPackage;
+import server.common.packages.ServerPackage;
 
 public class Sender {
 	
