@@ -2,14 +2,14 @@ package client.common;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-import client.backup.main.Launcher;
 import client.common.packages.LoginPackage;
 import client.common.packages.RequestPublishPackage;
 import client.common.packages.SignPackage;
 import client.common.packages.TBPackage;
 import client.common.packages.TypeConfig;
-import client.ui.SignupUI;
 
 /**
  * 用来发送信息的线程
@@ -20,9 +20,9 @@ import client.ui.SignupUI;
 
 public class Sender extends Thread {
 	// 消息队列
-	public static PackageList packagelist;
+	public static PackageList packagelist = new PackageList();
 	private DataOutputStream dous;// 输出流
-
+	//private Lock lock = new ReentrantLock();//锁如何使用
 	// 构造方法，传入输出流
 	public Sender(DataOutputStream dous) {
 		this.dous = dous;
@@ -31,14 +31,14 @@ public class Sender extends Thread {
 	// 线程启动方法
 	public void run() {
 		while (true) {
-			synchronized (packagelist) {
-				
-				// TODO gitHead()改为节点数量？？？
-				if (packagelist.getHead() != null) {
-					TBPackage p = packagelist.getHead().p;
-					this.send(p);
-				}
+			
+			// TODO gitHead()改为节点数量？？？
+			if (packagelist.nodeNum != 0) {
+				TBPackage p = packagelist.getHead().p;// 得到
+				this.send(p);
+				packagelist.delete();// 删除头节点
 			}
+
 		}
 	}
 
@@ -50,9 +50,9 @@ public class Sender extends Thread {
 			LoginPackage lp = (LoginPackage) p;
 			try {
 				dous.writeByte(TypeConfig.TYPE_LOGIN);
-				dous.write(lp.getUserName().getBytes().length);
+				dous.writeInt(lp.getUserName().getBytes().length);
 				dous.write(lp.getUserName().getBytes());
-				dous.write(lp.getPwd().getBytes().length);
+				dous.writeInt(lp.getPwd().getBytes().length);
 				dous.write(lp.getPwd().getBytes());
 				dous.flush();
 			} catch (IOException e) {
@@ -91,7 +91,7 @@ public class Sender extends Thread {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		
+
 		}
 		return 1;
 	}

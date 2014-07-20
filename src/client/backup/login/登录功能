@@ -1,5 +1,10 @@
 登陆流程简介（初稿）：
 
+本地业务（Listener部分）
 1 点击登陆界面后，LoginListener获得用户输入的userName和passWord
 
 2 用userName和passWord创建LoginPackage对象，丢到消息队列中，让sender处理
+
+响应业务（Processor部分）
+
+1 收到服务器发来的登陆结果数据包，将Laucher中的iflogin变量置为成功或失败，同时得到ID号

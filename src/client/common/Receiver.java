@@ -32,17 +32,17 @@ public class Receiver extends Thread{
 				int type = Launcher.dins.readByte();
 				if(type == TypeConfig.TYPE_LOGIN){
 					//TODO 得到接收的登录信息数据包
-//					TBPackage p = new LoginPackage();
-//					
-//					
-//					//创建登陆数据包处理类，并处理
-//					int n = this.processors.size();
-//					for (int i = 0; i < n; i++) {
-//						IProcessor current = this.processors.get(i);
-//						if(current instanceof LoginProcessor){
-//							((LoginProcessor)current).process(p);
-//						}
-//					}
+					TBPackage p = new TBPackage();
+					
+					
+					//创建登陆数据包处理类，并处理
+					int n = this.processors.size();
+					for (int i = 0; i < n; i++) {
+						IProcessor current = this.processors.get(i);
+						if(current instanceof LoginProcessor){
+							((LoginProcessor)current).process(p);
+						}
+					}
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
