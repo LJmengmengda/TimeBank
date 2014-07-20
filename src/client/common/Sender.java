@@ -26,6 +26,7 @@ public class Sender extends Thread {
 	// 构造方法，传入输出流
 	public Sender(DataOutputStream dous) {
 		this.dous = dous;
+		packagelist = new PackageList();
 	}
 
 	// 线程启动方法
@@ -36,6 +37,7 @@ public class Sender extends Thread {
 				// TODO gitHead()改为节点数量？？？
 				if (packagelist.getHead() != null) {
 					TBPackage p = packagelist.getHead().p;
+//					System.out.println(((LoginPackage)packagelist.getHead().p).getType());
 					this.send(p);
 				}
 			}
@@ -45,16 +47,25 @@ public class Sender extends Thread {
 	// 发送数据包的方法
 	public int send(TBPackage p) {
 		// 根据协议发送数据包
+		System.out.println("send function");
 		switch (p.getType()) {
 		case TypeConfig.TYPE_LOGIN:// 登陆
 			LoginPackage lp = (LoginPackage) p;
 			try {
 				dous.writeByte(TypeConfig.TYPE_LOGIN);
-				dous.write(lp.getUserName().getBytes().length);
+				dous.writeInt(lp.getUserName().getBytes().length);
 				dous.write(lp.getUserName().getBytes());
-				dous.write(lp.getPwd().getBytes().length);
+				dous.writeInt(lp.getPwd().getBytes().length);
 				dous.write(lp.getPwd().getBytes());
 				dous.flush();
+				
+				System.out.println("send loginPackage");
+				System.out.println(TypeConfig.TYPE_LOGIN);
+				System.out.println(lp.getUserName().getBytes().length);
+				System.out.println(new String(lp.getUserName().getBytes()));
+				System.out.println(lp.getPwd().getBytes().length);
+				System.out.println(new String(lp.getPwd().getBytes()));
+				packagelist.delete();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

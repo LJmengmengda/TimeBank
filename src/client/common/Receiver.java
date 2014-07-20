@@ -30,12 +30,15 @@ public class Receiver extends Thread{
 			//循环等待接收数据包
 			try {
 				int type = Launcher.dins.readByte();
-				if(type == TypeConfig.TYPE_LOGIN){
+				if(type == 0){
 //					//TODO 得到接收的登录信息数据包
-//					TBPackage p = new LoginPackage();
-//					
-//					
-//					//创建登陆数据包处理类，并处理
+					
+					
+					System.out.println(dins.readInt());
+					System.out.println(dins.readInt());
+					System.out.println(dins.readByte());
+					System.out.println(dins.readInt());
+					//创建登陆数据包处理类，并处理
 //					int n = this.processors.size();
 //					for (int i = 0; i < n; i++) {
 //						IProcessor current = this.processors.get(i);
@@ -65,5 +68,5 @@ public class Receiver extends Thread{
 	public void delProcessor(IProcessor p){
 		this.processors.remove(p);
 	}
-	
+
 }

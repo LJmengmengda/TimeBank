@@ -12,7 +12,11 @@ public class TypeConfig {
 	public static final byte TYPE_SIGNUP = 0x02;
 	public static final byte TYPE_REQUEST_PUBLISH = 0x03;
 	public static final byte TYPE_REQUEST_RECEIVE = 0x04;
-	public static final byte TYPE_REFRESH = 0x05;
+	public static final byte TYPE_REQUEST = 0x05;
+	
+	public static final byte REQUEST_GET_QEQUESTS = 0x01;
+	public static final byte REQUEST_REFRESH = 0x02;
+	
 	
 	
 }
