@@ -6,6 +6,8 @@ public class SignRequestPackage extends ServerPackage{
 
 
 
+	
+
 	public SignRequestPackage( byte state) {
 		this.state = state;
 		
