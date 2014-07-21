@@ -6,7 +6,6 @@ public class MainUI extends JFrame{
 
 	public static void main(String[] args){
 		MainUI ui=new MainUI();
-		
 	}
 	
 	public MainUI(){
