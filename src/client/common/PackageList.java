@@ -57,6 +57,7 @@ public class PackageList {
 				temp.next = new Node(p);
 				nodeNum++;
 			}
+			System.out.println("add");
 		}
 	
 	/**

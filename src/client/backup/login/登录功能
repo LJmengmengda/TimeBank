@@ -1,5 +1,21 @@
 登陆流程简介（初稿）：
 
-1 点击登陆界面后，LoginListener获得用户输入的userName和passWord
+本地部分（Listener部分）
+1 点击登陆后，判断两个输入框是否为空：空的话弹出对话框提示有空，都非空的话，从登录页面的输入框中获得用户名username和密码psw。
 
-2 用userName和passWord创建LoginPackage对象，丢到消息队列中，让sender处理
+2 用userName和psw创建LoginPackage对象，加到消息队列中，调用sender的send方法处理。
+
+响应服务器（Processor部分）
+
+1 收到服务器发来的登陆结果数据包，若成功，发送用户信息请求数据包                （将Laucher中的iflogin变量置为成功或失败，同时得到ID号）
+
+*2 返回了用户数据包，处理(未完成)
+
+
+
+登陆界面交互
+1 
+
+2 若返回登陆结果包，如果成功，发送用户信息请求数据包，登陆界面消失，进入主界面
+
+3 点击注册，跳转到注册页面
