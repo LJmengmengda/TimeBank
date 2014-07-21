@@ -3,11 +3,11 @@ package client.ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,10 +23,10 @@ import javax.swing.JTextField;
 public class SignupUI extends JFrame {
 
 	// 测试
-	public static void main(String[] arg) {
-		SignupUI SU = new SignupUI();
-		SU.init();
-	}
+//	public static void main(String[] arg) {
+//		SignupUI SU = new SignupUI();
+//		SU.init();
+//	}
 
 	// 属性
 	private JTextField UserNameField;// 姓名输入框
@@ -54,12 +54,12 @@ public class SignupUI extends JFrame {
 		JPanel centerPane = createcenterPanel();
 		this.add(centerPane, BorderLayout.CENTER);
 
-		// JPanel westPane = createwestPanel();
-		// this.add(westPane,BorderLayout.WEST);
-		// JPanel eastPane = createeastPanel();
-		// this.add(eastPane,BorderLayout.EAST);
-		// JPanel southPanel = createsouthPanel();
-		// this.add(southPanel,BorderLayout.SOUTH);
+		 JPanel westPane = createwestPanel();
+		 this.add(westPane,BorderLayout.WEST);
+		 JPanel eastPane = createeastPanel();
+		 this.add(eastPane,BorderLayout.EAST);
+		 JPanel southPanel = createsouthPanel();
+		 this.add(southPanel,BorderLayout.SOUTH);
 
 		this.setVisible(true);
 	}
@@ -83,29 +83,37 @@ public class SignupUI extends JFrame {
 		tlogo.setForeground(Color.black);// 设置字体颜色
 		tlogo.setHorizontalAlignment(JLabel.CENTER);
 		tlogo.setVerticalAlignment(JLabel.CENTER);
-		tlogo.setBounds(50, 0, 100, 30);
+		tlogo.setBounds(0, 0, 100, 30);
 		northPanel.add(tlogo,BorderLayout.SOUTH);
 		
 		return northPanel;
 	}
-
+	/**
+	 * 中间部分
+	 */
 	public JPanel createcenterPanel() {
 		JPanel centerPanel = new JPanel();
-		centerPanel.setLayout(new BorderLayout());
+		centerPanel.setLayout(new FlowLayout());
 
 		JLabel UserName = new JLabel("用户名");
 
-		UserNameField = new JTextField();
+		UserNameField = new JTextField(17);
 		UserNameField.setEditable(true);
-		UserNameField.setPreferredSize(new Dimension(190, 25));
+		UserNameField.setPreferredSize(new Dimension(190, 30));
 
 		JLabel PassWord1 = new JLabel("密码");
-
 		PassWordField1 = new JPasswordField(17);
+		PassWordField1.setPreferredSize(new Dimension(190, 30));
 
 		JLabel PassWord2 = new JLabel("密码确认");
 		PassWordField2 = new JPasswordField(17);
-
+		PassWordField2.setPreferredSize(new Dimension(190, 30));
+		
+		//下划线
+		JLabel underline = new JLabel();
+		underline.setBackground(Color.black);
+		underline.setPreferredSize(new Dimension(80,2));
+		
 		centerPanel.add(UserName);
 		centerPanel.add(UserNameField);
 
@@ -113,6 +121,8 @@ public class SignupUI extends JFrame {
 		centerPanel.add(PassWordField1);
 		centerPanel.add(PassWord2);
 		centerPanel.add(PassWordField2);
+		centerPanel.add(underline);
+		
 		centerPanel.setOpaque(false);
 
 		return centerPanel;
@@ -120,27 +130,25 @@ public class SignupUI extends JFrame {
 
 	public JPanel createwestPanel() {
 		JPanel westPanel = new JPanel();
-		westPanel.setPreferredSize(new Dimension(100, 0));
+		westPanel.setPreferredSize(new Dimension(60, 0));
 		westPanel.setOpaque(false);
 		return westPanel;
 	}
 
 	public JPanel createeastPanel() {
 		JPanel eastPanel = new JPanel();
-		eastPanel.setPreferredSize(new Dimension(100, 0));
+		eastPanel.setPreferredSize(new Dimension(60, 0));
 		eastPanel.setOpaque(false);
 		return eastPanel;
 	}
 
 	public JPanel createsouthPanel() {
 		JPanel southPanel = new JPanel();
-		southPanel.setPreferredSize(new Dimension(100, 47));
+		southPanel.setPreferredSize(new Dimension(0, 130));
 		southPanel.setOpaque(false);
-
 		SignUp = new JButton("注册用户");
-
 		southPanel.add(SignUp);
-
+		
 		return southPanel;
 	}
 
@@ -183,14 +191,10 @@ public class SignupUI extends JFrame {
 	public JButton getSignUp() {
 		return SignUp;
 	}
-
-	/**
-	 * set方法
-	 * 
-	 * @param signUp
-	 *            注册按钮
-	 */
+	
+	//set方法  : 注册按钮
 	public void setSignUp(JButton signUp) {
 		SignUp = signUp;
 	}
+	
 }

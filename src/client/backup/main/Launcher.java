@@ -73,7 +73,7 @@ public class Launcher {
 	public static void main(String[] args) {
 		Launcher l = new Launcher();
 		// 连接到服务器
-		if (l.connect2server("127.0.0.1", 9999) > 0) {
+		if (l.connect2server("127.0.0.1", 8080) > 0) {
 			// 初始化sender与receiver
 			l.initSenderAndReceiver();
 			// 弹出登录界面
