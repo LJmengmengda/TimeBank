@@ -14,11 +14,11 @@ public class Client_Message {
 	public static  Client_Message client_message=new Client_Message();
 	
 	public Client_Message(){
-		//������ݿ�ĵ�ַ���û�������
+		//连接数据库的地址
 		String url="jdbc:mysql://localhost:3306/BankOfTimeSQL";
 		String username="root";
 		String userpassword="123456";
-		//������Ӷ���
+		//获得连接对象
 		Connection con=Client_Message.Createcon(url, username, userpassword);
 	}
 	
