@@ -7,10 +7,13 @@ import java.awt.event.ActionEvent;
  */
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import client.backup.main.Launcher;
 import client.common.Sender;
 import client.common.packages.LoginPackage;
 import client.ui.LoginUI;
+import client.ui.SignupUI;
 
 /**
  * 登录界面的监听器
@@ -27,27 +30,31 @@ public class LoginListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		String com = e.getActionCommand();
 		if ("登陆".equals(com)) {
-			// TODO　创建登陆数据包并加入消息队列
-			LoginPackage loginPack = new LoginPackage((String)parent.getUserNameField().getSelectedItem(), 
-					new String(parent.getPassWordField().getPassword()));
-			
-			
-//			System.out.println(loginPack.getUserName());
-//			System.out.println(loginPack.getPwd());
-			
-			Sender.packagelist.add(loginPack);
-			
-			// 一段时间以后
-			
-			
-			// 成功
-			parent.dispose();
-			// 开启主界面
+			if(ifblank()){
+				JOptionPane.showMessageDialog(parent, "输入不能为空");
+			}else{
+				// TODO　创建登陆数据包并加入消息队列
+				LoginPackage loginPack = new LoginPackage((String) parent
+						.getUserNameField().getSelectedItem(), new String(parent
+						.getPassWordField().getPassword()));
+	
+				Sender.packagelist.add(loginPack);
+			}
+		} else if ("注册".equals(com)) {
+			// INIT 注册界面第一次实例化
+			Launcher.signupui = new SignupUI();
 		}
 
 	}
 
+	public boolean ifblank() {
+		if (parent.getUserNameField().getSelectedItem() == null
+				|| parent.getPassWordField().getPassword().length == 0) {
+				return true;
+		}else{
+			return false;
+		}
+	}
 }

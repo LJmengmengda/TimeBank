@@ -14,6 +14,9 @@ public class User {
 	private int ID; // 用户ID
 	private String userName; // 用户名
 	private String passWord; // 用户密码
+	
+	
+	
 	private int Time; // 用户时间额度
 	private String nickName; // 昵称
 	private String field; // 领域

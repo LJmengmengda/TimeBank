@@ -6,7 +6,7 @@ package client.common.packages;
  * @author SSheng
  *
  */
-public class TBPackage {
+public abstract class ClientPackage {
 	private byte type;//数据包类型
 
 	
