@@ -34,25 +34,48 @@ public class MainUI extends JFrame{
 //		this.setBackground(Color.white);// 设置背景为白色
 		this.getContentPane().setBackground(Color.white);
 		
-//		// 北边面板
-//		JPanel northPane = this.createnorthPanel();
-//		this.add(northPane, BorderLayout.NORTH);
-//		// 中间面板
-//		JPanel centerPane = createcenterPanel();
-//		this.add(centerPane, BorderLayout.CENTER);
-//		// 南边面板
-//		JPanel southPanel = createsouthPanel();
-//		this.add(southPanel,BorderLayout.SOUTH);
+		// 北边面板
+		JPanel northPane = this.createnorthPanel();
+		this.add(northPane, BorderLayout.NORTH);
+		// 中间面板
+		JPanel centerPane = createcenterPanel();
+		this.add(centerPane, BorderLayout.CENTER);
+		// 南边面板
+		JPanel southPanel = createsouthPanel();
+		this.add(southPanel,BorderLayout.SOUTH);
+		JPanel westPane = createwestPanel();
+		this.add(westPane,BorderLayout.WEST);
+		JPanel eastPane = createeastPanel();
+		this.add(eastPane,BorderLayout.EAST);
 		
 		this.setVisible(true);
 		
 	}
 
 	
+	private JPanel createeastPanel() {
+		JPanel eastPanel = new JPanel();
+		eastPanel.setPreferredSize(new Dimension(25, 0));
+		eastPanel.setOpaque(false);
+		eastPanel.setOpaque(true);
+		return eastPanel;
+	}
+
+
+	private JPanel createwestPanel() {
+		JPanel westPanel = new JPanel();
+		westPanel.setPreferredSize(new Dimension(25, 0));
+		westPanel.setOpaque(false);
+		westPanel.setBackground(Color.black);
+		westPanel.setOpaque(true);
+		return westPanel;
+	}
+
+
 	private JPanel createsouthPanel() {
 		JPanel southPanel=new JPanel();
 		//设置下方面板的尺寸
-		southPanel.setPreferredSize(new Dimension(350,70));
+		southPanel.setPreferredSize(new Dimension(350,60));
 		//添加按钮
 		JButton jb1=new JButton("租凭");
 		southPanel.add(jb1);
@@ -75,11 +98,6 @@ public class MainUI extends JFrame{
 		centerPanel.setPreferredSize(new Dimension(350,500));
 		//设置背景色
 		centerPanel.setBackground(Color.white);
-		//添加上一页，下一页的按钮
-		JButton jb1=new JButton("上一页");
-		centerPanel.add(jb1);
-		JButton jb2=new JButton("下一页");
-		centerPanel.add(jb2);
 		return centerPanel;
 	}
 
@@ -90,17 +108,21 @@ public class MainUI extends JFrame{
 	private JPanel createnorthPanel() {
 		JPanel northPanel=new JPanel();
 		//设置上方面板的尺寸
-		northPanel.setPreferredSize(new Dimension(350,30));
+		northPanel.setPreferredSize(new Dimension(350,40));
 		//添加图片，标签，按钮图片
 		ImageIcon logo = new ImageIcon("images/logo3.png");//时间银行logo
 		JLabel jlogo = new JLabel(logo);
-		northPanel.add(jlogo);
-		
+		//添加上一页，下一页的按钮
+		JButton jb1=new JButton("上一页");
+		JButton jb2=new JButton("下一页");
 		JLabel jText=new JLabel("TimeBank");
-		northPanel.add(jText);
-		
 		JButton jb=new JButton("设置");
+		
+		northPanel.add(jb1);
+		northPanel.add(jlogo);
+		northPanel.add(jText);
 		northPanel.add(jb);
+		northPanel.add(jb2);
 		
 		return northPanel;
 	}
