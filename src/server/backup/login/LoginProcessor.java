@@ -5,16 +5,15 @@ import java.io.DataOutputStream;
 import server.SQL.Client_Message;
 import server.common.IProcessor;
 import server.common.Sender;
-import sever.common.packages.LoginResquestPackage;
-import sever.common.packages.ServerPackage;
+import server.common.packages.LoginRequestPackage;
+import server.common.packages.ServerPackage;
 import client.common.packages.LoginPackage;
-import client.common.packages.TBPackage;
+import client.common.packages.ClientPackage;
 
 public class LoginProcessor implements IProcessor{
 
 	@Override
-	public void process(TBPackage p, DataOutputStream dos) {
-		// TODO Auto-generated method stub
+	public void process(ClientPackage p, DataOutputStream dos) {
 		//
 		LoginPackage lp = (LoginPackage)p;
 		String username = lp.getUserName();
@@ -25,7 +24,7 @@ public class LoginProcessor implements IProcessor{
 		if(src!=0){
 			
 			System.out.println("登陆成功~~该用户存在~~ID是："+src);
-			ServerPackage lo=new LoginResquestPackage(src,(byte) 0);
+			ServerPackage lo=new LoginRequestPackage(src,(byte) 0);
 			lo.setType((byte) 0);
 			lo.setDest(src);
 			lo.setSrc(0);
@@ -37,15 +36,13 @@ public class LoginProcessor implements IProcessor{
 		}
 		else{
 			System.out.println("登陆不成功~该用户存在~~");
-			ServerPackage lo=new LoginResquestPackage(src,(byte) 1);
+			ServerPackage lo=new LoginRequestPackage(src,(byte) 1);
 			lo.setType((byte) 1);
 			//添加到要发送的队列中
 //			Hong.F_K_packagelist.add(lo);
 		}
 		
 	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
 	}
 
 	}

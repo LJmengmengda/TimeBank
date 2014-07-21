@@ -11,6 +11,7 @@ import java.net.UnknownHostException;
 import client.common.Receiver;
 import client.common.Sender;
 import client.ui.LoginUI;
+import client.ui.MainUI;
 import client.ui.SignupUI;
 
 /**
@@ -32,6 +33,7 @@ public class Launcher {
 	// TODO 添加所有界面
 	static public LoginUI loginui;
 	static public SignupUI signupui;
+	static public MainUI mainui;
 
 	// TODO　添加更多状态变量
 	public static boolean iflogin;// 是否登陆
@@ -71,10 +73,11 @@ public class Launcher {
 	public static void main(String[] args) {
 		Launcher l = new Launcher();
 		// 连接到服务器
-		if (l.connect2server("192.168.0.117", 9090) > 0) {
+		if (l.connect2server("127.0.0.1", 9999) > 0) {
 			// 初始化sender与receiver
 			l.initSenderAndReceiver();
 			// 弹出登录界面
+			// INIT 登陆界面第一次实例化
 			loginui = new LoginUI();
 		}
 

@@ -1,4 +1,4 @@
-package sever.common.packages;
+package server.common.packages;
 
 public class SignRequestPackage extends ServerPackage{
 

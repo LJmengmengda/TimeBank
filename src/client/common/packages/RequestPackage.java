@@ -5,10 +5,18 @@ package client.common.packages;
  * @author SSheng
  *
  */
-public class RequestPackage extends TBPackage{
+public class RequestPackage extends ClientPackage{
 	
 	private byte requestType;//请求类型
 	
-	
+	public RequestPackage(byte type){
+		this.requestType = type;
+		
+		this.setType(TypeConfig.TYPE_REQUEST);
+	}
+
+	public byte getRequestType() {
+		return requestType;
+	}
 
 }

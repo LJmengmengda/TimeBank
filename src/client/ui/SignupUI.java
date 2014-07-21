@@ -6,46 +6,50 @@ import java.awt.FlowLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+import client.backup.signup.SignupListener;
 /**
  * 注册界面
  * @author 徐意
  *
  */
 
+/**
+ * @author Administrator
+ *
+ */
 public class SignupUI extends JFrame{
 	
-	/**
-	 * @param arg
-	 */
-	public static void main(String[] arg){
-		SignupUI SU=new SignupUI();
-		SU.init();
+	public static void main(String[] args) {
+		new SignupUI();
 	}
-	
 	//属性
+	private JTextField userNameField;//用户名输入框
+	private JPasswordField passWordField1;//密码输入框
+	private JPasswordField passWordField2;//密码输入检测框
 	
-	private JComboBox<String> UserNameField;//用户名输入框
-	private JPasswordField PassWordField1;//密码输入框
-	private JPasswordField PassWordField2;//密码输入检测框
+	private JButton signup;//注册
+	private JButton login;//登陆
 	
-	private JButton SignUp;//注册
-	private JButton Login;//登陆
+	private SignupListener s;
 	
 	//界面初始化
-	public void init(){
+	public SignupUI(){
 		this.setSize(350,600);
 		this.setTitle("时间银行");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setUndecorated(false);
 		this.setLayout(new BorderLayout());
 //		this.setBackground();
+		
+		
+		s = new SignupListener(this);
 		
 		JPanel centerPane = createcenterPanel();
 		this.add(centerPane,BorderLayout.CENTER);
@@ -66,51 +70,51 @@ public class SignupUI extends JFrame{
 	}
 	
 	
-	public JComboBox<String> getUserNameField() {
-		return UserNameField;
+	public JTextField getUserNameField() {
+		return userNameField;
 	}
 
-	public void setUserNameField(JComboBox<String> userNameField) {
-		UserNameField = userNameField;
+	public void setUserNameField(JTextField userNameField) {
+		this.userNameField = userNameField;
 	}
 
 	
 	public JPasswordField getPassWordField1() {
-		return PassWordField1;
+		return passWordField1;
 	}
 
 
 	public void setPassWordField1(JPasswordField passWordField1) {
-		PassWordField1 = passWordField1;
+		this.passWordField1 = passWordField1;
 	}
 
 
 	public JPasswordField getPassWordField2() {
-		return PassWordField2;
+		return passWordField2;
 	}
 
 
 	public void setPassWordField2(JPasswordField passWordField2) {
-		PassWordField2 = passWordField2;
+		this.passWordField2 = passWordField2;
 	}
 
 
 	public JButton getSignUp() {
-		return SignUp;
+		return signup;
 	}
 	/**set方法
 	 * @param signUp 注册按钮
 	 */
 	public void setSignUp(JButton signUp) {
-		SignUp = signUp;
+		this.signup = signUp;
 	}
 
 	public JButton getLogin() {
-		return Login;
+		return login;
 	}
 
 	public void setLogin(JButton login) {
-		Login = login;
+		this.login = login;
 	}
 	
 	
@@ -121,9 +125,9 @@ public class SignupUI extends JFrame{
 		JLabel UserName = new JLabel("用户名");
 		
 		
-		UserNameField = new JComboBox<String>();
-		UserNameField.setEditable(true);
-		UserNameField.setPreferredSize(new Dimension(190,25));
+		userNameField = new JTextField();
+		userNameField.setEditable(true);
+		userNameField.setPreferredSize(new Dimension(190,25));
 		//TODO tianhjia
 		
 		
@@ -131,20 +135,19 @@ public class SignupUI extends JFrame{
 		
 		JLabel PassWord1 = new JLabel("密码");
 		
-		PassWordField1 =new JPasswordField(17);
+		passWordField1 =new JPasswordField(17);
 		
 		JLabel PassWord2 = new JLabel("密码确认");
-		PassWordField2 =new JPasswordField(17);
+		passWordField2 =new JPasswordField(17);
 		
 		centerPanel.add(UserName);
-		centerPanel.add(UserNameField);
+		centerPanel.add(userNameField);
 	
 		centerPanel.add(PassWord1);
-		centerPanel.add(PassWordField1);
+		centerPanel.add(passWordField1);
 		centerPanel.add(PassWord2);
-		centerPanel.add(PassWordField2);
+		centerPanel.add(passWordField2);
 		centerPanel.setOpaque(false);
-		
 		
 		return centerPanel;
 	}
@@ -178,12 +181,9 @@ public class SignupUI extends JFrame{
 		southPanel.setPreferredSize(new Dimension(100,47));
 		southPanel.setOpaque(false);
 		
-		SignUp = new JButton("注册用户");
-		
-		
-		
-	  
-	    southPanel.add(SignUp);
+		signup = new JButton("注册用户");
+		signup.addActionListener(s);
+	    southPanel.add(signup);
 	    
 	    
 	    return southPanel;

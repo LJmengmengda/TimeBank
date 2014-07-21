@@ -171,8 +171,6 @@ public class Client_Message {
 				con=DriverManager.getConnection(url, username, userpassword);
 				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 		

@@ -150,8 +150,6 @@ public class Client_Request_Client {
 				con=DriverManager.getConnection(url, username, userpassword);
 				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 		

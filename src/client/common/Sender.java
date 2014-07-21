@@ -6,8 +6,8 @@ import java.io.IOException;
 import client.backup.main.Launcher;
 import client.common.packages.LoginPackage;
 import client.common.packages.RequestPublishPackage;
-import client.common.packages.SignPackage;
-import client.common.packages.TBPackage;
+import client.common.packages.SignupPackage;
+import client.common.packages.ClientPackage;
 import client.common.packages.TypeConfig;
 import client.ui.SignupUI;
 
@@ -32,22 +32,21 @@ public class Sender extends Thread {
 	// 线程启动方法
 	public void run() {
 		while (true) {
-			synchronized (packagelist) {
-				
-				// TODO gitHead()改为节点数量？？？
-				if (packagelist.getHead() != null) {
-					TBPackage p = packagelist.getHead().p;
-//					System.out.println(((LoginPackage)packagelist.getHead().p).getType());
-					this.send(p);
-				}
+
+			// TODO gitHead()改为节点数量？？？
+			if (packagelist.getHead() != null) {
+				ClientPackage p = packagelist.getHead().p;
+				// System.out.println(((LoginPackage)packagelist.getHead().p).getType());
+				this.send(p);
+				packagelist.delete();
 			}
+
 		}
 	}
 
 	// 发送数据包的方法
-	public int send(TBPackage p) {
+	public int send(ClientPackage p) {
 		// 根据协议发送数据包
-		System.out.println("send function");
 		switch (p.getType()) {
 		case TypeConfig.TYPE_LOGIN:// 登陆
 			LoginPackage lp = (LoginPackage) p;
@@ -58,30 +57,24 @@ public class Sender extends Thread {
 				dous.writeInt(lp.getPwd().getBytes().length);
 				dous.write(lp.getPwd().getBytes());
 				dous.flush();
-				
-				System.out.println("send loginPackage");
-				System.out.println(TypeConfig.TYPE_LOGIN);
-				System.out.println(lp.getUserName().getBytes().length);
-				System.out.println(new String(lp.getUserName().getBytes()));
-				System.out.println(lp.getPwd().getBytes().length);
-				System.out.println(new String(lp.getPwd().getBytes()));
-				packagelist.delete();
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			break;
 		case TypeConfig.TYPE_SIGNUP:// 注册
-			SignPackage sp = (SignPackage) p;
+			System.out.println("sssssssss");
+			SignupPackage sp = (SignupPackage) p;
 			try {
 				dous.writeByte(TypeConfig.TYPE_SIGNUP);
 				dous.writeInt(sp.getUserName().getBytes().length);
 				dous.write(sp.getUserName().getBytes());
 				dous.writeInt(sp.getPwd().getBytes().length);
 				dous.write(sp.getPwd().getBytes());
-				dous.writeInt(sp.getNickName().getBytes().length);
-				dous.write(sp.getNickName().getBytes());
-				dous.writeInt(sp.getField().getBytes().length);
-				dous.write(sp.getField().getBytes());
+				// dous.writeInt(sp.getNickName().getBytes().length);
+				// dous.write(sp.getNickName().getBytes());
+				// dous.writeInt(sp.getField().getBytes().length);
+				// dous.write(sp.getField().getBytes());
 				dous.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -102,7 +95,7 @@ public class Sender extends Thread {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		
+
 		}
 		return 1;
 	}

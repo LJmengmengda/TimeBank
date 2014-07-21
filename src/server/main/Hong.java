@@ -4,7 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
 
-import sever.common.packages.ServerPackage;
+import server.common.packages.ServerPackage;
 
 public class Hong {
 

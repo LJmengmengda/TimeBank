@@ -5,7 +5,7 @@ package client.common.packages;
  * @author SSheng
  * 
  */
-public class RequestReceivePackage extends TBPackage{
+public class RequestReceivePackage extends ClientPackage{
 	
 	private int requestID;//所接受需求的序列号
 	private String time;//接受的时间
