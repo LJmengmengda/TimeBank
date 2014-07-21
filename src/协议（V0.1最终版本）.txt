@@ -1,0 +1,61 @@
+客戶端到服務器
+消息頭：
+消息類型	type	byte 
+用户的ID  ID      int  //注册和登陆的话~此属性必须为0~其余操作此属性值均是服务器返回来的值
+用户ID	userID int
+
+消息體
+
+1 登陸	TYPE_LOGIN	LoginPackage
+用戶名	username	string
+密碼	psw	string
+
+2 註冊	TYPE_SIGNUP	SignupPackage
+用戶名	username	string
+密碼	psw	string
+
+3 發佈需求	TYPE_REQUEST_PUBLISH	RequestPublicPackage
+发布者ID	publisherID	string
+地點	place	string
+內容	content	string
+時間	time	string
+額度	cost	int
+
+4 接受需求	TYPE_REQUEST_RECEIVE	RequestReceivePackage
+需求的ID号	requestID	int
+时间	time	string
+接受需求的ID	receiverID	int
+
+5 获得需求列表 请求	TYPE_REQUEST	RequestPackage
+请求类型	requesttype	byte
+
+服务器到客户机
+
+消息头
+消息类型	type	byte
+目的地ID	destinationID	int
+	
+
+1 登陆	0x00	LoginRequestPackage
+用户ID	userID	int
+登陆结果	loginstate	byte（失败 成功）
+
+2 注册	0x01	SignRequestPackage
+注册结果	signupstate	byte（失败 成功）
+
+3 发布需求（返回结果）0x	ClientResultPackage
+结果类型	resulttype	byte		
+发布结果	state	byte（失败 成功）
+
+4 接受需求（返回结果）0x	ClientResultPackage
+结果类型	resulttype	byte			
+接受结果	Result	byte（失败 成功）
+
+5 获得需求列表 请求	0x04
+总数	total	int
+	
+	用户名	username	string
+	需求ID	requestID	int
+	时间	time	string
+	内容	con
+	

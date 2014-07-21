@@ -2,14 +2,12 @@ package client.common;
 
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import client.backup.login.LoginProcessor;
-import client.backup.main.Launcher;
-import client.common.packages.TBPackage;
-import client.common.packages.LoginPackage;
-import client.common.packages.TypeConfig;
-
+import client.backup.signup.SignupProcessor;
+import server.common.packages.ServerConfig;
+import server.common.packages.LoginRequestPackage;
+import server.common.packages.SignRequestPackage;
 
 /**
  * 通用的接受数据类的接口
@@ -18,52 +16,50 @@ import client.common.packages.TypeConfig;
  */
 public class Receiver extends Thread{
 	private DataInputStream dins;
-	//保存所有信息处理类的队列
-	private ArrayList<IProcessor> processors;
+	private LoginProcessor loginprocessor;
+	private SignupProcessor signupprocessor;
 	
 	public Receiver(DataInputStream dins) {
 		this.dins = dins;
+		loginprocessor = new LoginProcessor();
+		signupprocessor = new SignupProcessor();
 	}
 	//启动线程方法
 	public void run(){
 		while(true){
 			//循环等待接收数据包
 			try {
-				int type = Launcher.dins.readByte();
-				if(type == TypeConfig.TYPE_LOGIN){
-					//TODO 得到接收的登录信息数据包
-//					TBPackage p = new LoginPackage();
-//					
-//					
-//					//创建登陆数据包处理类，并处理
-//					int n = this.processors.size();
-//					for (int i = 0; i < n; i++) {
-//						IProcessor current = this.processors.get(i);
-//						if(current instanceof LoginProcessor){
-//							((LoginProcessor)current).process(p);
-//						}
-//					}
+				int type = dins.readByte();
+				if(type == ServerConfig.LOGIN_REQUEST){
+					System.out.println("接收到服务器发来的type"+type);
+//					//TODO 得到接收的登录信息数据包
+//					int src = dins.readInt();
+//					int dest = dins.readInt();
+					byte state = dins.readByte();
+					System.out.println("接收到服务器发来的state"+state);
+					int userID = dins.readInt();
+					System.out.println("接收到服务器发来的ID"+userID);
+//					int srcnum = dins.readInt();
+					LoginRequestPackage loginRequest = new LoginRequestPackage(userID,state);
+					
+					loginprocessor.process(loginRequest);
+				}else if(type == ServerConfig.SIGN_REQUEST){
+					//得到
+					System.out.println("接收到服务器发来的type"+type);
+//					int src = dins.readInt();
+//					int dest = dins.readInt();
+					byte state = dins.readByte();
+					System.out.println("接收到服务器发来的state"+state);
+					SignRequestPackage signuppack = new SignRequestPackage(state);
+					
+					signupprocessor.process(signuppack);
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}
 	}
-	//添加所有的消息处理类的方法
-	public void addAllProcessors(){
-		this.addProcessor(new LoginProcessor());
-		//TODO 添加所有其他的Processor
-		
-	}
-	
-	//添加消息处理类的方法
-	public void addProcessor(IProcessor p){
-		this.processors.add(p);
-	}
-	//删除消息处理类的方法
-	public void delProcessor(IProcessor p){
-		this.processors.remove(p);
-	}
-	
+
+
 }

@@ -1,6 +1,6 @@
 package client.common;
 
-import client.common.packages.TBPackage;
+import client.common.packages.ClientPackage;
 
 /**
  * 
@@ -45,7 +45,7 @@ public class PackageList {
 	 * 添加节点
 	 * @param p TBPackage包
 	 */
-	public void add(TBPackage p){
+	public void add(ClientPackage p){
 			if(head == null){
 				head = new Node(p);
 				nodeNum++;
@@ -57,6 +57,7 @@ public class PackageList {
 				temp.next = new Node(p);
 				nodeNum++;
 			}
+			System.out.println("add");
 		}
 	
 	/**
@@ -74,10 +75,10 @@ public class PackageList {
 }
 //内部节点类
 class Node{
-	TBPackage p;
+	ClientPackage p;
 	Node next;
 	
-	public Node(TBPackage p){
+	public Node(ClientPackage p){
 		this.p = p;
 	}
 }

@@ -5,7 +5,7 @@ package client.common.packages;
  * @author pc
  *
  */
-public class LoginPackage extends TBPackage {
+public class LoginPackage extends ClientPackage {
 
 	private String userName;	//用户名
 	private String pwd;  		//密码
@@ -20,6 +20,9 @@ public class LoginPackage extends TBPackage {
 		this.userName = userName;
 		this.pwd = pwd;
 		this.setType(TypeConfig.TYPE_LOGIN);
+		//TODO 暂时标记为零
+		this.setID(0);
+		
 	}
 
 	

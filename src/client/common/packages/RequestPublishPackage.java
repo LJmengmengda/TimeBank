@@ -6,7 +6,7 @@ package client.common.packages;
  * @author SSheng
  * 
  */
-public class RequestPublishPackage extends TBPackage {
+public class RequestPublishPackage extends ClientPackage {
 
 	private int publisherID;// 发布客户ID
 	private String title;// 客户发表需求的标题

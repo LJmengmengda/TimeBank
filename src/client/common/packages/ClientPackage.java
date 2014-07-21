@@ -6,10 +6,17 @@ package client.common.packages;
  * @author SSheng
  *
  */
-public class TBPackage {
+public abstract class ClientPackage {
 	private byte type;//数据包类型
 
+	private  int ID;//客户机的ID
 	
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
 	//type的set和get方法
 	public byte getType() {
 		return type;
