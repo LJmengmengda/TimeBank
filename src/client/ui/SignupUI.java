@@ -180,8 +180,7 @@ public class SignupUI extends JFrame{
 		
 		SignUp = new JButton("注册用户");
 		
-		
-		
+			
 	  
 	    southPanel.add(SignUp);
 	    
