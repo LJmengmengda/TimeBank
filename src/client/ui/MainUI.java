@@ -31,21 +31,20 @@ public class MainUI extends JFrame{
 		this.setLocationRelativeTo(null);// 居中显示
 		this.setUndecorated(false);// 禁用此窗体装饰
 		this.setIconImage(new ImageIcon("images/logo2.png").getImage());// 设置窗体的图标
-		this.getContentPane().setBackground(Color.blue);// 设置背景为白色
 		FlowLayout fl=new FlowLayout();
 		fl.setVgap(0);//设置流布局设置组件之间以及组件与 Container 的边之间的水平间隙。
 		this.setLayout(fl);//设置为流布局
 		
 		
-//		// 北边面板
-//		JPanel northPane = this.createnorthPanel();
-//		this.add(northPane, BorderLayout.NORTH);
-//		// 中间面板
-//		JPanel centerPane = createcenterPanel();
-//		this.add(centerPane, BorderLayout.CENTER);
-//		// 南边面板
-//		JPanel southPanel = createsouthPanel();
-//		this.add(southPanel,BorderLayout.SOUTH);
+		// 北边面板
+		JPanel northPane = this.createnorthPanel();
+		this.add(northPane, BorderLayout.NORTH);
+		// 中间面板
+		JPanel centerPane = createcenterPanel();
+		this.add(centerPane, BorderLayout.CENTER);
+		// 南边面板
+		JPanel southPanel = createsouthPanel();
+		this.add(southPanel,BorderLayout.SOUTH);
 		
 		this.setVisible(true);
 		
@@ -81,6 +80,11 @@ public class MainUI extends JFrame{
 		centerPanel.setPreferredSize(new Dimension(350,500));
 		//设置背景色
 		centerPanel.setBackground(Color.white);
+		//添加上一页，下一页的按钮
+		JButton jb1=new JButton("上一页");
+		centerPanel.add(jb1);
+		JButton jb2=new JButton("下一页");
+		centerPanel.add(jb2);
 		return centerPanel;
 	}
 
