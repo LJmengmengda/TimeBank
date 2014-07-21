@@ -1,0 +1,20 @@
+从服务器获得需求列表功能（客户端）：
+
+整体流程
+
+1 登陆成功时，自动向云端发送获得需求列表请求（数据包为RequestPackage ， type = REQUEST_GET_QEQUESTS），
+
+2 云端收到请求，返回一个ClientRequestListPackage数据包，内含需求总个数和每个需求详细信息（发布者姓名   需求ID 内容  时间 ）
+
+3 receiver从输入流获得ClientRequestListPackage数据包，交给RequestGetProcessor的process方法处理
+
+4 process方法中解包，创建若干Request对象，加入MainUI中的静态队列ArrayList<Request> requests
+
+5 MainUI中默认有5个对象：requestPanel1、requestPanel2...requestPanel5
+
+6 MainUI中有showRequests（）方法，显示内容
+	1  默认情况，得到requests队列的前5个对象，调用5个requestPanel的changeText（Request r）方法，使每个panel显示对应的request中的内容
+
+	2 点击下一页时，显示 队列第6-10的对象，以此类推
+	
+	3 点击上一页是，显示前5个对象
