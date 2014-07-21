@@ -30,7 +30,7 @@ public class MainUI extends JFrame{
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);// 设置关闭
 		this.setLocationRelativeTo(null);// 居中显示
 		this.setUndecorated(false);// 禁用此窗体装饰
-		this.setIconImage(new ImageIcon("images/logo.png").getImage());// 设置窗体的图标
+		this.setIconImage(new ImageIcon("images/logo3.png").getImage());// 设置窗体的图标
 //		this.setBackground(Color.white);// 设置背景为白色
 		this.getContentPane().setBackground(Color.white);
 		
