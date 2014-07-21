@@ -20,6 +20,9 @@ public class LoginPackage extends ClientPackage {
 		this.userName = userName;
 		this.pwd = pwd;
 		this.setType(TypeConfig.TYPE_LOGIN);
+		//TODO 暂时标记为零
+		this.setID(0);
+		
 	}
 
 	

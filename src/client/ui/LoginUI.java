@@ -40,6 +40,7 @@ public class LoginUI extends JFrame {
 
 	private LoginListener loginListener;
 
+	//TODO 修改关闭方式
 	public LoginUI() {
 		this.setSize(350, 600);
 		this.setTitle("时间银行");

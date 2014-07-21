@@ -43,7 +43,6 @@ public class Sender extends Thread {
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -57,6 +56,7 @@ public class Sender extends Thread {
 			LoginPackage lp = (LoginPackage) p;
 			try {
 				dous.writeByte(TypeConfig.TYPE_LOGIN);
+				dous.writeInt(lp.getID());
 				dous.writeInt(lp.getUserName().getBytes().length);
 				dous.write(lp.getUserName().getBytes());
 				dous.writeInt(lp.getPwd().getBytes().length);
@@ -72,6 +72,7 @@ public class Sender extends Thread {
 			SignupPackage sp = (SignupPackage) p;
 			try {
 				dous.writeByte(TypeConfig.TYPE_SIGNUP);
+				dous.writeInt(sp.getID());
 				dous.writeInt(sp.getUserName().getBytes().length);
 				dous.write(sp.getUserName().getBytes());
 				dous.writeInt(sp.getPwd().getBytes().length);
