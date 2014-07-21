@@ -3,7 +3,6 @@ package client.ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -12,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import client.backup.main.RequestPanel;
 import client.common.Request;
 
 /**
@@ -22,17 +22,143 @@ import client.common.Request;
  */
 public class MainUI extends JFrame {
 
-	JButton jbPageUp;// 上一页
-	JButton jbPageDown;// 下一页
-	JButton jbRequest;//租赁
-	JButton jbWanted;//出租
-	JButton jbNews;//消息
-	JButton jbMe;//我
-	JButton jbSetting;//设置
+	private JButton jbPageUp;// 上一页
+	private JButton jbPageDown;// 下一页
+	private JButton jbRequest;//租赁
+	private JButton jbWanted;//出租
+	private JButton jbNews;//消息
+	private JButton jbMe;//我
+	private JButton jbSetting;//设置
 	
-	JLabel Larrow;
-	JLabel Rarrow;
+	private JLabel Larrow;
+	private JLabel Rarrow;
 	
+	private RequestPanel p1;
+	private RequestPanel p2;
+	private RequestPanel p3;
+	private RequestPanel p4;
+	private RequestPanel p5;
+	
+	public JButton getJbPageUp() {
+		return jbPageUp;
+	}
+
+	public void setJbPageUp(JButton jbPageUp) {
+		this.jbPageUp = jbPageUp;
+	}
+
+	public JButton getJbPageDown() {
+		return jbPageDown;
+	}
+
+	public void setJbPageDown(JButton jbPageDown) {
+		this.jbPageDown = jbPageDown;
+	}
+
+	public JButton getJbRequest() {
+		return jbRequest;
+	}
+
+	public void setJbRequest(JButton jbRequest) {
+		this.jbRequest = jbRequest;
+	}
+
+	public JButton getJbWanted() {
+		return jbWanted;
+	}
+
+	public void setJbWanted(JButton jbWanted) {
+		this.jbWanted = jbWanted;
+	}
+
+	public JButton getJbNews() {
+		return jbNews;
+	}
+
+	public void setJbNews(JButton jbNews) {
+		this.jbNews = jbNews;
+	}
+
+	public JButton getJbMe() {
+		return jbMe;
+	}
+
+	public void setJbMe(JButton jbMe) {
+		this.jbMe = jbMe;
+	}
+
+	public JButton getJbSetting() {
+		return jbSetting;
+	}
+
+	public void setJbSetting(JButton jbSetting) {
+		this.jbSetting = jbSetting;
+	}
+
+	public JLabel getLarrow() {
+		return Larrow;
+	}
+
+	public void setLarrow(JLabel larrow) {
+		Larrow = larrow;
+	}
+
+	public JLabel getRarrow() {
+		return Rarrow;
+	}
+
+	public void setRarrow(JLabel rarrow) {
+		Rarrow = rarrow;
+	}
+
+	public RequestPanel getP1() {
+		return p1;
+	}
+
+	public void setP1(RequestPanel p1) {
+		this.p1 = p1;
+	}
+
+	public RequestPanel getP2() {
+		return p2;
+	}
+
+	public void setP2(RequestPanel p2) {
+		this.p2 = p2;
+	}
+
+	public RequestPanel getP3() {
+		return p3;
+	}
+
+	public void setP3(RequestPanel p3) {
+		this.p3 = p3;
+	}
+
+	public RequestPanel getP4() {
+		return p4;
+	}
+
+	public void setP4(RequestPanel p4) {
+		this.p4 = p4;
+	}
+
+	public RequestPanel getP5() {
+		return p5;
+	}
+
+	public void setP5(RequestPanel p5) {
+		this.p5 = p5;
+	}
+
+	public static ArrayList<Request> getRequestList() {
+		return requestList;
+	}
+
+	public static void setRequestList(ArrayList<Request> requestList) {
+		MainUI.requestList = requestList;
+	}
+
 	public static ArrayList<Request> requestList;
 	
 	public static void main(String[] args) {
@@ -54,15 +180,6 @@ public class MainUI extends JFrame {
 //		this.setBackground(Color.white);// 设置背景为白色
 		this.getContentPane().setBackground(Color.white);
 		
-//		// 北边面板
-//		JPanel northPane = this.createnorthPanel();
-//		this.add(northPane, BorderLayout.NORTH);
-//		// 中间面板
-//		JPanel centerPane = createcenterPanel();
-//		this.add(centerPane, BorderLayout.CENTER);
-//		// 南边面板
-//		JPanel southPanel = createsouthPanel();
-//		this.add(southPanel,BorderLayout.SOUTH);
 		
 		// 北边面板
 		JPanel northPane = this.createnorthPanel();
@@ -120,16 +237,17 @@ public class MainUI extends JFrame {
 		// 设置背景色
 		centerPanel.setBackground(Color.white);
 		
+		Request r = new Request("逗比", 1, "2014.7.21", "需求一逗比共商逗比大业",5);
 		
-		RequestPanel p1 = new RequestPanel("逗比","2014.7.21","5min","需求一逗比共商逗比大业");
+		p1 = new RequestPanel(r);
 		centerPanel.add(p1);
-		RequestPanel p2 = new RequestPanel("逗比","2014.7.21","5min","需求一逗比共商逗比大业");
+		p2 = new RequestPanel(r);
 		centerPanel.add(p2);
-		RequestPanel p3 = new RequestPanel("逗比","2014.7.21","5min","需求一逗比共商逗比大业");
+		p3 = new RequestPanel(r);
 		centerPanel.add(p3);
-		RequestPanel p4 = new RequestPanel("逗比","2014.7.21","5min","需求一逗比共商逗比大业");
+		p4 = new RequestPanel(r);
 		centerPanel.add(p4);
-		RequestPanel p5 = new RequestPanel("逗比","2014.7.21","5min","需求一逗比共商逗比大业");
+		p5 = new RequestPanel(r);
 		centerPanel.add(p5);
 		
 		return centerPanel;
@@ -188,46 +306,4 @@ public class MainUI extends JFrame {
 		return eastPanel;
 	}
 	
-}
-
-class RequestPanel extends JPanel{
-	
-	JLabel name;
-	JLabel time;
-	JLabel cost;
-	JLabel content;
-	JLabel detail;
-	ImageIcon detailimage = new ImageIcon("images/next.png");
-	Graphics g;
-	
-	public RequestPanel(String name,String time,String cost,String content){
-		this.setPreferredSize(new Dimension(300,90));
-//		this.setBackground(Color.white);
-		this.setLayout(null);
-		
-		
-		this.name = new JLabel();
-		this.time = new JLabel();
-		this.cost = new JLabel();
-		this.content = new JLabel();
-		this.detail = new JLabel();
-		
-		this.content.setText(content);
-		this.content.setBounds(0, 0, 270, 70);
-		this.name.setText(name);
-		this.name.setBounds(0, 70, 50, 20);
-		this.time.setText(time);
-		this.time.setBounds(40, 70, 60, 20);
-		this.cost.setText(cost);
-		this.cost.setBounds(260, 70, 80, 20);
-		
-		this.detail = new JLabel(detailimage);
-		this.detail.setBounds(250, 0, 50, 70);
-		
-		this.add(this.name);
-		this.add(this.time);
-		this.add(this.cost);
-		this.add(this.content);
-		this.add(this.detail);
-	}
 }
