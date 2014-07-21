@@ -8,7 +8,6 @@ public class Sever {
 
 	public static void main(String[] args) throws Exception {
 		Sever s=new Sever(); 
-
 			s.procession(9090);
 		
 	}
@@ -16,7 +15,7 @@ public class Sever {
 	private void procession(int port) throws Exception {
 		
 		ServerSocket  ss=new ServerSocket (port);
-		System.out.println("~~~~~~~~~~~!!!~~~~~~~~~!!!!!!!~~~");
+		System.out.println("~~~服务器已经开启~~~~~~~~等待客户机的来访问~~!!!~~~~~~~~~!!!!!!!~~~");
 		while(true){
 		
 			Socket s=ss.accept();

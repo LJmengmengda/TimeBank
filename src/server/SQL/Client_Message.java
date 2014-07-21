@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Client_Message {
@@ -13,11 +14,11 @@ public class Client_Message {
 	public static  Client_Message client_message=new Client_Message();
 	
 	public Client_Message(){
-		//������ݿ�ĵ�ַ���û�������
-		String url="jdbc:mysql://localhost:3306/sqltest";
+		//连接数据库的地址
+		String url="jdbc:mysql://localhost:3306/BankOfTimeSQL";
 		String username="root";
 		String userpassword="123456";
-		//������Ӷ���
+		//获得连接对象
 		Connection con=Client_Message.Createcon(url, username, userpassword);
 	}
 	
@@ -41,7 +42,7 @@ public class Client_Message {
 //	}
 	
 	
-	//按照用戶名和密码来查询
+	//按照用戶名和密码来查询~~~用来对付登陆的操作~~
 	public   int Quryuser(String username,String password) throws Exception{
 		
 		Statement sta=con.createStatement();
@@ -72,35 +73,68 @@ public class Client_Message {
 		System.out.println("���"+"����������������"+"�˺�"+"����������������"+"����");
 		//��ʼ��������������
 		while(res.next()){
+			
 			System.out.println(res.getString(1)+"����������������"+res.getString(2)+
 					"����������������"+res.getString(3));
 		}
 	}
 	
+	///返回该表格的信息总数
+	public int getCount() throws SQLException{
+//	方法1：	
+//		Statement sta=con.createStatement();
+//		
+//		String s="select count(*) from UserMessage as countNumber";
+//		ResultSet res=sta.executeQuery(s);
+//		int count=0;
+//		while(res.next()){
+//			count=res.getInt(0);
+//		}
+//		return 0;
+		
+		
+	//方法2：	
+		Statement sta=con.createStatement();
+		
+		String perform="select * from UserMessage";
+		
+		ResultSet res=sta.executeQuery(perform);
+		
+		int count=0;
+		while(res.next()){
+			count++;
+		}
+		return count;
+		
+	}
 	
-	///��ӵķ���
-	public   void Adduser(int id,String name,String password) throws Exception{
+	
+	///向用户信息数据库里面添加一个新的用户信息~~
+	public   int Adduser(String name,String password) throws Exception{
 		
 		//����Ҫִ�е�SQl���
-		String perform="insert into user(userid,username,userpassword) values(?,?,?)";
+		String perform="insert into UserMessage(userid,username,userpassword) values(?,?,?)";
 		
-		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
+		
 		PreparedStatement psta=con.prepareStatement(perform);
-		
-		//��ÿһ��ռλ��ָ��һ��ֵ
-		psta.setInt(1, id);
+		System.out.print("每写入前已存在用户信息的总数长度是："+client_message.getCount());
+//ֵ
+		psta.setInt(1, client_message.getCount()+1);
 		psta.setString(2, name);
 		psta.setString(3, password);
-		//ִ��SQl,���ҷ���Ӱ���˼�����ݵ�ͳ����Ŀ
+		
 		int count=psta.executeUpdate();
-		//���count����0��ʾ������ݳɹ�
+		
 		if(count>0){
-			System.out.println(" ��ݲ�����ݿ�ɹ�");
+			System.out.println("注册写入数据库成功~~");
+			
+			System.out.print("插入书记哭后的存在用户信息的总数长度是："+client_message.getCount());
 		}
 		else{
-			System.out.println(" ��ݲ�����ݿ�ʧ��");
+			System.out.println("注册写入数据库不成功");
 			
 		}
+		return count;
 	}
 	
 	//�޸���ݿ�~~~
