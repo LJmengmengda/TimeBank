@@ -21,7 +21,7 @@ public class LoginProcessor implements IProcessor{
 		try {
 			int ID=0;
 			//通过查询 服务器数据库的这两个值来返回用户的ID是否存在~存在的话ID不为 0。不存在继续为0
-			ID = Client_Message.client_message.Quryuser(username, pwd);
+//			ID = Client_Message.client_message.Quryuser(username, pwd);
 			if(ID!=0){
 				
 				System.out.println("登陆成功~~该用户存在~~ID是："+ID);

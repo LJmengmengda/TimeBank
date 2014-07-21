@@ -62,7 +62,7 @@ public class Receiver extends Thread{
 		//TODO 该变量为宏定义文件的常量
 		
 		///这是注册的信息
-		if(b==0x00){
+		if(b==0){
 			System.out.println("这是注册的信息");
 			int UserNameLength=dis.readInt();
 			String UserName=this.Readbytes(dis,UserNameLength);
@@ -80,7 +80,7 @@ public class Receiver extends Thread{
 			System.out.print("~~~~萌萌哒~~~~~XXXX~~~~萌萌哒~~~~~~");
 
 			
-		}else if(b==0x01){    ///这个是登陆的请求信息
+		}else if(b==1){    ///这个是登陆的请求信息
 			System.out.println("这个是登陆的请求信息");
 			int UserNameLength=dis.readInt();
 			String UserName=this.Readbytes(dis,UserNameLength);

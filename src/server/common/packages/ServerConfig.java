@@ -35,8 +35,8 @@ public class ServerConfig {
 	
 	
 	//回复用户是否登陆还是注册
-	public static byte CLIENT_RESULT_PACKAGE_LOGIN=0;
-	public static byte CLIENT_RESULT_PACKAGE_SIGNUP=1;
+	public static byte CLIENT_RESULT_PACKAGE_PUBLISH_MESSAGE=0;
+	public static byte CLIENT_RESULT_PACKAGE_RECEIVE_MESSAGE=1;
 	///回复用户的结果的三个状态~
 	
 	public static byte CLIENT_RESULT_PACKAGE_STATE_SUCCESS=0;

@@ -134,7 +134,7 @@ public class Client_Message {
 			System.out.println("注册写入数据库不成功");
 			
 		}
-		return count+1;
+		return count;
 	}
 	
 	//�޸���ݿ�~~~

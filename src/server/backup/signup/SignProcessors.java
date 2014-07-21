@@ -24,8 +24,8 @@ public class SignProcessors implements IProcessor{
 				//返回的count也是写入时候的对数据库的对所有数据能过有影响的总数
 				//count在数值上也是ID
 				
-				int count=Client_Message.client_message.Adduser(username, password);
-				
+//				int count=Client_Message.client_message.Adduser(username, password);
+				int count=1;
 				if(count>0){
 					System.out.println("注册成功~~");
 					ServerPackage lo=new SignRequestPackage((byte) 1);
