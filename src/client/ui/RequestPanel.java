@@ -1,4 +1,4 @@
-package client.backup.main;
+package client.ui;
 
 import java.awt.Dimension;
 
@@ -25,7 +25,7 @@ public class RequestPanel extends JPanel{
 	ImageIcon detailimage = new ImageIcon("images/next.png");
 	
 	public RequestPanel(Request r){
-		this.setPreferredSize(new Dimension(300,90));
+		this.setPreferredSize(new Dimension(280,90));
 //		this.setBackground(Color.white);
 		this.setLayout(null);
 		
@@ -43,10 +43,10 @@ public class RequestPanel extends JPanel{
 		this.time.setText(r.getTime());
 		this.time.setBounds(40, 70, 60, 20);
 		this.cost.setText(r.getCost()+"min");
-		this.cost.setBounds(260, 70, 80, 20);
+		this.cost.setBounds(240, 70, 80, 20);
 		
 		this.detail = new JLabel(detailimage);
-		this.detail.setBounds(250, 0, 50, 70);
+		this.detail.setBounds(230, 0, 50, 70);
 		
 		this.add(this.username);
 		this.add(this.time);
