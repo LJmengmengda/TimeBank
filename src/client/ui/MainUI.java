@@ -59,7 +59,7 @@ public class MainUI extends JFrame {
 		this.setIconImage(new ImageIcon("images/logo2.png").getImage());// 设置窗体的图标
 		this.setUndecorated(false);
 
-		this.setIconImage(new ImageIcon("images/logo.png").getImage());// 设置窗体的图标
+		this.setIconImage(new ImageIcon("images/logo3.png").getImage());// 设置窗体的图标
 		
 		mainuilistener = new MainUIListener(this);
 		
