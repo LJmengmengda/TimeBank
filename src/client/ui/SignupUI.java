@@ -157,7 +157,12 @@ public class SignupUI extends JFrame {
 		southPanel.add(SignUp);
 		SignUp.addActionListener(signupListener);
 		
-		return southPanel;
+			
+	  
+	    southPanel.add(SignUp);
+	    
+	    
+	    return southPanel;
 	}
 
 	// 设置背景图片的方法
