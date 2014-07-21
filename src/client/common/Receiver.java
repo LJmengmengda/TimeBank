@@ -79,7 +79,7 @@ public class Receiver extends Thread {
 						Request r = new Request(new String(username),
 								requestID, new String(time),
 								new String(content));
-						Launcher.mainui.requests.add(r);
+						Launcher.mainui.requestList.add(r);
 					}
 					
 					// 发布需求
