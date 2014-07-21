@@ -31,14 +31,27 @@ public class Receiver extends Thread{
 			try {
 				int type = dins.readByte();
 				if(type == ServerConfig.LOGIN_REQUEST){
+					System.out.println("接收到服务器发来的type"+type);
 //					//TODO 得到接收的登录信息数据包
+//					int src = dins.readInt();
+//					int dest = dins.readInt();
+					byte state = dins.readByte();
+					System.out.println("接收到服务器发来的state"+state);
 					int userID = dins.readInt();
-					byte loginstate = dins.readByte();
-					LoginRequestPackage loginRequest = new LoginRequestPackage(userID,loginstate);
+					System.out.println("接收到服务器发来的ID"+userID);
+//					int srcnum = dins.readInt();
+					LoginRequestPackage loginRequest = new LoginRequestPackage(userID,state);
+					
 					loginprocessor.process(loginRequest);
 				}else if(type == ServerConfig.SIGN_REQUEST){
+					//得到
+					System.out.println("接收到服务器发来的type"+type);
+//					int src = dins.readInt();
+//					int dest = dins.readInt();
 					byte state = dins.readByte();
+					System.out.println("接收到服务器发来的state"+state);
 					SignRequestPackage signuppack = new SignRequestPackage(state);
+					
 					signupprocessor.process(signuppack);
 				}
 			} catch (IOException e) {
