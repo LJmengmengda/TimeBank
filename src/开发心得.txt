@@ -1,3 +1,5 @@
 1.添加自定义字段的task标示      Window->Preferences->JAVA->Compiler->Task tag
 2.添加快捷输入模板  window -- preferences -- java --editor -- templates 
 3.！！！！！协议要一个人制定  全部协议！！！
+
+4.一定要避免硬编码
