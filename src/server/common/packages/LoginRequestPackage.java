@@ -10,6 +10,9 @@ public class LoginRequestPackage extends ServerPackage {
 	public LoginRequestPackage(int id, byte state) {
 
 		this.ID = id;
+	
+	public LoginRequestPackage(int srcnum, byte state) {
+		this.srcnum = srcnum;
 		this.state = state;
 		this.setType(ServerConfig.LOGIN_REQUEST);
 	}
@@ -20,6 +23,8 @@ public class LoginRequestPackage extends ServerPackage {
 
 	public void setSrc(int src) {
 		this.ID = src;
+	public void setSrc(int srcnum) {
+		this.srcnum = srcnum;
 	}
 
 	public byte getState() {
