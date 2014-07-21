@@ -1,6 +1,7 @@
 客戶端到服務器
 消息頭：
 消息類型	type	byte
+用户ID	userID int
 
 消息體
 
