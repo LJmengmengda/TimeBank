@@ -119,9 +119,6 @@ public class LoginUI extends JFrame {
 		
 		login.addActionListener(loginListener);//给登陆按钮添加监听器
 		
-		// rememberPWD = new JCheckBox("记住密码");
-		// rememberPWD.setOpaque(false);
-
 		centerPanel.add(UserName);
 		centerPanel.add(userNameField);
 		centerPanel.add(PassWord);
@@ -159,7 +156,7 @@ public class LoginUI extends JFrame {
 		signUp = new JButton("注册");
 
 		southPanel.add(signUp);
-		signUp.addActionListener(loginListener);
+		signUp.addActionListener(loginListener);//给注册按钮添加监听器
 
 		return southPanel;
 	}
@@ -190,14 +187,6 @@ public class LoginUI extends JFrame {
 	public void setPassWordField(JPasswordField passWordField) {
 		this.passWordField = passWordField;
 	}
-
-	// public JCheckBox getRememberPWD() {
-	// return rememberPWD;
-	// }
-	//
-	// public void setRememberPWD(JCheckBox rememberPWD) {
-	// this.rememberPWD = rememberPWD;
-	// }
 
 	public JButton getSignUp() {
 		return signUp;

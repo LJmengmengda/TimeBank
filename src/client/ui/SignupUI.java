@@ -23,10 +23,10 @@ import javax.swing.JTextField;
 public class SignupUI extends JFrame {
 
 	// 测试
-	public static void main(String[] arg) {
-		SignupUI SU = new SignupUI();
-		SU.init();
-	}
+//	public static void main(String[] arg) {
+//		SignupUI SU = new SignupUI();
+//		SU.init();
+//	}
 
 	// 属性
 	private JTextField UserNameField;// 姓名输入框
