@@ -8,11 +8,11 @@ import server.common.packages.ServerPackage;
 
 public class Hong {
 
-	public static int Src=0;//服务器的ID号码
+	public static final int ServerSrc=0;//服务器的ID号码
 	//在线用户的存储队列
 	public static ArrayList<Integer> clientOnlientList=new ArrayList<Integer>();
 	///
-//	public static ArrayList<>
+	public static ArrayList<Receiver> Receiverlist=new ArrayList<Receiver>();
 	//接受从客户端发来的信息类啊~~
 //	public static ArrayList<Package> K_F_packagelist=new ArrayList<Package>();
 
