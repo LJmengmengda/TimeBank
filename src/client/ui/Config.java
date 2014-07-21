@@ -7,7 +7,7 @@ public interface Config {
 	int YR = 5;
 	
 	int LSizeW =50;//标签的宽度
-	int SizeH =25;//标签 文本框 密码框高度
+	int SizeH =30;//标签 文本框 密码框高度
 	int TSizeW = 190;//输入框的宽度
 
 	//第一行的x y

@@ -80,11 +80,10 @@ public class AddRequestDetail extends JFrame{
 		
 		JLabel con = this.setJLabel("内容：");
 		con.setBounds(Config.FirstX, Config.Third,Config.LSizeW, Config.SizeH);
-//		JTextField content = new JTextField(50);
-//		content.setBounds(Config.FirstX+60, Config.Third, Config.TSizeW, 100);
 		JTextArea ja = new JTextArea();//实例化一个JTextArea
 		JScrollPane content = new JScrollPane(ja);
 		content.setBounds(Config.FirstX+60, Config.Third, Config.TSizeW,Config.SizeH*2);
+		ja.setLineWrap(true);//设置大于宽度后换行
 		
 		JButton submit = new JButton("发布");
 		submit.setBounds(Config.FirstX+60, Config.Fiveth, Config.TSizeW, Config.SizeH);
