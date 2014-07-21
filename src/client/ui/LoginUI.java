@@ -154,7 +154,6 @@ public class LoginUI extends JFrame {
 		southPanel.setOpaque(false);
 
 		signUp = new JButton("注册");
-
 		southPanel.add(signUp);
 		signUp.addActionListener(loginListener);//给注册按钮添加监听器
 

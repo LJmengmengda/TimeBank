@@ -14,6 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import client.backup.login.LoginListener;
+import client.backup.signup.SignupListener;
+
 /**
  * 注册界面
  * 
@@ -23,10 +26,10 @@ import javax.swing.JTextField;
 public class SignupUI extends JFrame {
 
 	// 测试
-//	public static void main(String[] arg) {
-//		SignupUI SU = new SignupUI();
-//		SU.init();
-//	}
+	public static void main(String[] arg) {
+		SignupUI SU = new SignupUI();
+		SU.init();
+	}
 
 	// 属性
 	private JTextField UserNameField;// 姓名输入框
@@ -34,6 +37,8 @@ public class SignupUI extends JFrame {
 	private JPasswordField PassWordField2;// 密码输入检测框
 	private JButton SignUp;// 注册按钮
 
+	private SignupListener signupListener;
+	
 	/**
 	 * 注册界面初始化
 	 */
@@ -47,6 +52,8 @@ public class SignupUI extends JFrame {
 		this.setBackground(Color.white);// 设置背景为白色
 //		this.setResizable(false);// 设置不可改变大小
 
+		signupListener = new SignupListener(this);
+		
 		// 北
 		JPanel northPane = this.createnorthPanel();
 		this.add(northPane, BorderLayout.NORTH);
@@ -148,6 +155,7 @@ public class SignupUI extends JFrame {
 		southPanel.setOpaque(false);
 		SignUp = new JButton("注册用户");
 		southPanel.add(SignUp);
+		SignUp.addActionListener(signupListener);
 		
 		return southPanel;
 	}
