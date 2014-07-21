@@ -8,7 +8,7 @@ public class SignRequestPackage extends ServerPackage{
 		return state;
 	}
 
-	public SignRequestPackage(byte type, int dest, int src, byte state) {
+	public SignRequestPackage(byte state) {
 		super();
 		this.state = state;
 	}
