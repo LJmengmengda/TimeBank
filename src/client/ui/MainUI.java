@@ -139,7 +139,7 @@ public class MainUI extends JFrame {
 		f.setVgap(2);
 		centerPanel.setLayout(f);
 		
-		Request r = new Request("逗比", 1, "2014.7.21", "需求一逗比共商逗比大业",5);
+		Request r = new Request("逗比", 1, "2014.7.21", "需求一逗比共商逗比大业",5,"");
 		
 		p1 = new RequestPanel(r);
 		centerPanel.add(p1);

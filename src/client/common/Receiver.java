@@ -78,11 +78,16 @@ public class Receiver extends Thread {
 						byte[] content = new byte[contentlength];
 						dins.read(content);
 						int cost = dins.readInt();
+						int placelength = dins.readInt();
+						byte[] place = new byte[placelength];
+						
 						Request r = new Request(new String(username),
 								requestID, new String(time),
-								new String(content),cost);
+								new String(content),cost,"");
+						
+						System.out.println("创建了request");
+						System.out.println("接收到服务器的request"+r.getUserName()+	r.getRequestID()+ r.getTime());
 						Launcher.mainui.requestList.add(r);
-						System.out.println("接收到服务器的");
 					}
 					
 					// 发布需求

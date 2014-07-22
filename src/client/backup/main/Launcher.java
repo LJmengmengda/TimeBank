@@ -76,16 +76,15 @@ public class Launcher {
 	public static void main(String[] args) {
 		Launcher l = new Launcher();
 		// 连接到服务器
-		//if (l.connect2server("192.168.0.117", 9090) > 0) {
+		if (l.connect2server("192.168.0.117", 9090) > 0) {
+			System.out.println("登录了");
 			// 初始化sender与receiver
 			l.initSenderAndReceiver();
 			// 弹出登录界面
 			// INIT 登陆界面第一次实例化
 			loginui = new LoginUI();
 //			mainui = new MainUI();
-			sender.packagelist.add(new RequestPackage(TypeConfig.REQUEST_GET_QEQUESTS, 0));
-			System.out.println("发送了数据包");
-		//}
+		}
 
 	}
 

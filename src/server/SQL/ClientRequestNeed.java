@@ -46,7 +46,7 @@ public class ClientRequestNeed {
 		Statement sta=con.createStatement();
 		//����Ҫִ�е�SQl���
 		String perform="select * from user";
-		///��ʼִ��SQL���,���ҷ���һ�����
+		//
 		ResultSet res=sta.executeQuery(perform);
 		System.out.println("���"+"����������������"+"�˺�"+"����������������"+"����");
 		//��ʼ��������������
