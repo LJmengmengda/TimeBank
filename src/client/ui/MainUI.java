@@ -34,11 +34,11 @@ public class MainUI extends JFrame {
 	private JLabel Larrow;
 	private JLabel Rarrow;
 	
-	private RequestPanel p1;
-	private RequestPanel p2;
-	private RequestPanel p3;
-	private RequestPanel p4;
-	private RequestPanel p5;
+	private RequestPanel requestPanel1;
+	private RequestPanel requestPanel2;
+	private RequestPanel requestPanel3;
+	private RequestPanel requestPanel4;
+	private RequestPanel requestPanel5;
 	
 	MainUIListener mainuilistener;
 
@@ -131,25 +131,25 @@ public class MainUI extends JFrame {
 		
 		Request r = new Request("逗比", 1, "2014.7.21", "需求一逗比共商逗比大业",5);
 		
-		p1 = new RequestPanel(r);
-		centerPanel.add(p1);
-		p1.getDetail().addMouseListener(mainuilistener);
+		requestPanel1 = new RequestPanel(r);
+		centerPanel.add(requestPanel1);
+		requestPanel1.getDetail().addMouseListener(mainuilistener);
 		
-		p2 = new RequestPanel(r);
-		centerPanel.add(p2);
-		p2.getDetail().addMouseListener(mainuilistener);
+		requestPanel2 = new RequestPanel(r);
+		centerPanel.add(requestPanel2);
+		requestPanel2.getDetail().addMouseListener(mainuilistener);
 		
-		p3 = new RequestPanel(r);
-		centerPanel.add(p3);
-		p3.getDetail().addMouseListener(mainuilistener);
+		requestPanel3 = new RequestPanel(r);
+		centerPanel.add(requestPanel3);
+		requestPanel3.getDetail().addMouseListener(mainuilistener);
 		
-		p4 = new RequestPanel(r);
-		centerPanel.add(p4);
-		p4.getDetail().addMouseListener(mainuilistener);
+		requestPanel4 = new RequestPanel(r);
+		centerPanel.add(requestPanel4);
+		requestPanel4.getDetail().addMouseListener(mainuilistener);
 		
-		p5 = new RequestPanel(r);
-		centerPanel.add(p5);
-		p5.getDetail().addMouseListener(mainuilistener);
+		requestPanel5 = new RequestPanel(r);
+		centerPanel.add(requestPanel5);
+		requestPanel5.getDetail().addMouseListener(mainuilistener);
 		return centerPanel;
 	}
 
@@ -281,43 +281,43 @@ public class MainUI extends JFrame {
 	}
 
 	public RequestPanel getP1() {
-		return p1;
+		return requestPanel1;
 	}
 
 	public void setP1(RequestPanel p1) {
-		this.p1 = p1;
+		this.requestPanel1 = p1;
 	}
 
 	public RequestPanel getP2() {
-		return p2;
+		return requestPanel2;
 	}
 
 	public void setP2(RequestPanel p2) {
-		this.p2 = p2;
+		this.requestPanel2 = p2;
 	}
 
 	public RequestPanel getP3() {
-		return p3;
+		return requestPanel3;
 	}
 
 	public void setP3(RequestPanel p3) {
-		this.p3 = p3;
+		this.requestPanel3 = p3;
 	}
 
 	public RequestPanel getP4() {
-		return p4;
+		return requestPanel4;
 	}
 
 	public void setP4(RequestPanel p4) {
-		this.p4 = p4;
+		this.requestPanel4 = p4;
 	}
 
 	public RequestPanel getP5() {
-		return p5;
+		return requestPanel5;
 	}
 
 	public void setP5(RequestPanel p5) {
-		this.p5 = p5;
+		this.requestPanel5 = p5;
 	}
 
 	public static ArrayList<Request> getRequestList() {
