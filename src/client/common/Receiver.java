@@ -77,9 +77,10 @@ public class Receiver extends Thread {
 						int contentlength = dins.readInt();
 						byte[] content = new byte[contentlength];
 						dins.read(content);
+						int cost = dins.readInt();
 						Request r = new Request(new String(username),
 								requestID, new String(time),
-								new String(content));
+								new String(content),cost);
 						Launcher.mainui.requestList.add(r);
 						System.out.println("接收到服务器的");
 					}
