@@ -10,13 +10,15 @@ import java.sql.Statement;
 public class Client_Message {
 
 
-
+	
+	
+	
 	public Client_Message(){
-		//������ݿ�ĵ�ַ���û�������
-		String url="jdbc:mysql://localhost:3308/timebank";
+		//连接数据库的地址
+		String url="jdbc:mysql://localhost:3306/BankOfTimeSQL";
 		String username="root";
 		String userpassword="123456";
-		//������Ӷ���
+		//获得连接对象
 		con=Client_Message.Createcon(url, username, userpassword);
 	}
 	
@@ -41,23 +43,20 @@ public class Client_Message {
 	
 	
 	//按照用戶名和密码来查询~~~用来对付登陆的操作~~
-	public   int Quryuser(String username,String password) throws Exception{
+	public  int Quryuser(String username,String password) throws Exception{
 		
 		Statement sta=con.createStatement();
-		System.out.println("~~~~~~~AAAAAAAAAAAAA~~~~");
-		String perform="select * from UserMessage  where username=\'"+username+"\'and userpassword=\'"+password+"\'";
+		
+		String perform="select * from UserMessage  where username=?,userpassword=?";
 		
 		ResultSet res=sta.executeQuery(perform);
-		System.out.println("~~~~~~~ABBBBBBBBBBBBBBBBBBBb~~~");
-		//��ʼ��������������
+		System.out.println("在执行执行了登陆的验证操作~~~~");
 		
 		int ID=0;
+		
 		while(res.next()){
-			ID=res.getInt(1);
-			System.out.println(res.getString(1)+"����������������"+res.getString(2)+
-					"����������������"+res.getString(3));
+			ID=res.getInt(0);
 		}
-		System.out.println("ID是："+ID+"~~~~~~~~~~~");
 		return ID;
 	}
 	
@@ -68,7 +67,7 @@ public class Client_Message {
 		///ͨ�����Ӷ�����SQL����
 		Statement sta=con.createStatement();
 		//����Ҫִ�е�SQl���
-		String perform="select * from UserMessage";
+		String perform="select * from user";
 		///��ʼִ��SQL���,���ҷ���һ�����
 		ResultSet res=sta.executeQuery(perform);
 		System.out.println("���"+"����������������"+"�˺�"+"����������������"+"����");
@@ -82,26 +81,23 @@ public class Client_Message {
 	
 	
 	
-	public   String QuryUserName(int id) throws Exception{
+	public   String QuryuserName(int id) throws Exception{
 		///ͨ�����Ӷ�����SQL����
 		Statement sta=con.createStatement();
 		//����Ҫִ�е�SQl���
-		String perform="select * from UserMessage where id="+id;
+		String perform="select * from user where id="+id;
 		///��ʼִ��SQL���,���ҷ���һ�����
 		ResultSet res=sta.executeQuery(perform);
 		System.out.println("���"+"����������������"+"�˺�"+"����������������"+"����");
 		//��ʼ��������������
-		
 		String name="";
 		while(res.next()){
-			name=res.getString(2);
+			name=res.getNString(2);
 			System.out.println(res.getString(1)+"����������������"+res.getString(2)+
 					"����������������"+res.getString(3));
 		}
-		
 		return name;
 	}
-	
 	
 	
 	///返回该表格的信息总数
@@ -142,7 +138,7 @@ public class Client_Message {
 		
 		
 		PreparedStatement psta=con.prepareStatement(perform);
-		System.out.print("每写入前已存在用户信息的总数长度是："+this.getCount());
+		System.out.print("每写入前已存在用户信息的总数长度是："+ this.getCount());
 //ֵ
 		psta.setInt(1, this.getCount()+1);
 		psta.setString(2, name);
@@ -159,16 +155,14 @@ public class Client_Message {
 			System.out.println("注册写入数据库不成功");
 			
 		}
-		System.out.println(count);
 		return count;
-		
 	}
 	
 	//�޸���ݿ�~~~
 	public static  void updateuser(int id,String name,String password) throws Exception{
 		
 		//����Ҫִ�е�SQl���
-		String perform="update UserMessage set username=?,userpassword=? where id=?";
+		String perform="update user set username=?,userpassword=? where userid=?";
 		
 		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
 		PreparedStatement psta=con.prepareStatement(perform);
@@ -193,7 +187,7 @@ public class Client_Message {
 	public static  void deleteuser(int id,String name,String password) throws Exception{
 		
 		//����Ҫִ�е�SQl���
-		String perform="delete from UserMessage where id=?";
+		String perform="delete from user where userid=?";
 		
 		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
 		PreparedStatement psta=con.prepareStatement(perform);

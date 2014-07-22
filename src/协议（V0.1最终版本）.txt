@@ -22,6 +22,7 @@
 額度	cost	int
 
 4 接受需求	TYPE_REQUEST_RECEIVE	RequestReceivePackage
+接受需求的ID	receiverID	int
 需求的ID号	requestID	int
 时间	time	string
 接受者需求的ID	receiverID	int
@@ -58,5 +59,7 @@
 	用户名	username	string
 	需求ID	requestID	int
 	时间	time	string
-	内容	con
+	内容	content
+	额度cost
+	地点string place
 	

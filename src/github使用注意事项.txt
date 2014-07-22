@@ -20,5 +20,6 @@ eclipse中使用git基本操作：
 
 6 merge：把当前分支与指定分支合并
 
-7 show in history: 查看历史修改，可在History视图中查看所有commit，并可通过右键——checkout回退至相应的版本
+7 show in history: 查看历史修改，可在History视图中查看所有commit，
+并可通过右键——checkout回退至相应的版本
 

@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import client.backup.main.Launcher;
 import client.common.packages.LoginPackage;
+import client.common.packages.RequestPackage;
 import client.common.packages.RequestPublishPackage;
 import client.common.packages.SignupPackage;
 import client.common.packages.ClientPackage;
@@ -98,14 +99,31 @@ public class Sender extends Thread {
 				dous.write(rpp.getTitle().getBytes());
 				dous.writeInt(rpp.getContent().getBytes().length);
 				dous.write(rpp.getContent().getBytes());
-				dous.writeInt(rpp.getCost());
 				dous.writeInt(rpp.getTime().getBytes().length);
 				dous.write(rpp.getTime().getBytes());
+				dous.writeInt(rpp.getCost());
 				dous.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			break;
+		case TypeConfig.TYPE_REQUEST_RECEIVE://接收需求
+			//TODO　法送接收需求请求
+			break;
+		case TypeConfig.TYPE_REQUEST://各种请求
+			RequestPackage rp = (RequestPackage)p;
+			try {
+				dous.writeByte(TypeConfig.TYPE_REQUEST);
+				dous.writeInt(rp.getID());
+				dous.writeByte(TypeConfig.REQUEST_GET_QEQUESTS);
+				dous.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			break;
+			
+			
+			
 		}
 		return 1;
 	}

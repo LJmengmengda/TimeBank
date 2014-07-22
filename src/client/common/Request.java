@@ -1,49 +1,51 @@
 package client.common;
 
+/**
+ * 需求类
+ * @author 唐梓毅
+ *
+ */
 public class Request {
-	
-	private int store_id;//数据库里面存储的ID号 
-	private int user_id; ///发布这条需求的ID
-	private String place;//
-	private String content;
+	private String userName;
+	private int requestID;
 	private String time;
+	private String content;
+	private String place;
 	private int cost;
-	
-	
-	
-	public Request(int store_id, int user_id, String place,
-			String content, String time, int cost) {
-		super();
-		this.store_id = store_id;
-		this.user_id = user_id;
-		this.place = place;
-		this.content = content;
+	/**
+	 * @param userName  发布用户名
+	 * @param requestID	需求ID
+	 * @param time		时间
+	 * @param content	内容
+	 * @param place		地点
+	 */
+	public Request(String userName, int requestID, String time, String content,int cost,String place) {
+		this.userName = userName;
+		this.requestID = requestID;
 		this.time = time;
+		this.content = content;
 		this.cost = cost;
+		this.place = place;
 	}
-	public int getStore_id() {
-		return store_id;
-	}
-	public void setStore_id(int store_id) {
-		this.store_id = store_id;
-	}
-	public int getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
-	}
+	
 	public String getPlace() {
 		return place;
 	}
+	
 	public void setPlace(String place) {
 		this.place = place;
 	}
-	public String getContent() {
-		return content;
+	public String getUserName() {
+		return userName;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public int getRequestID() {
+		return requestID;
+	}
+	public void setRequestID(int requestID) {
+		this.requestID = requestID;
 	}
 	public String getTime() {
 		return time;
@@ -51,14 +53,16 @@ public class Request {
 	public void setTime(String time) {
 		this.time = time;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public int getCost() {
 		return cost;
 	}
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
-	
-
-
-
 }

@@ -49,7 +49,7 @@ public class SignupUI extends JFrame {
 		this.setLocationRelativeTo(null);// 居中显示
 		this.setUndecorated(false);// 禁用此窗体装饰
 		this.setIconImage(new ImageIcon("images/logo.png").getImage());// 设置窗体的图标
-		this.setBackground(Color.white);// 设置背景为白色
+		this.getContentPane().setBackground(Color.white);
 //		this.setResizable(false);// 设置不可改变大小
 
 		signupListener = new SignupListener(this);
@@ -92,6 +92,8 @@ public class SignupUI extends JFrame {
 		tlogo.setVerticalAlignment(JLabel.CENTER);
 		tlogo.setBounds(0, 0, 100, 30);
 		northPanel.add(tlogo,BorderLayout.SOUTH);
+		
+		northPanel.setOpaque(false);
 		
 		return northPanel;
 	}
@@ -157,7 +159,12 @@ public class SignupUI extends JFrame {
 		southPanel.add(SignUp);
 		SignUp.addActionListener(signupListener);
 		
-		return southPanel;
+			
+	  
+	    southPanel.add(SignUp);
+	    
+	    
+	    return southPanel;
 	}
 
 	// 设置背景图片的方法
