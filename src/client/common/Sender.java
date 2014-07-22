@@ -98,14 +98,26 @@ public class Sender extends Thread {
 				dous.write(rpp.getTitle().getBytes());
 				dous.writeInt(rpp.getContent().getBytes().length);
 				dous.write(rpp.getContent().getBytes());
-				dous.writeInt(rpp.getCost());
 				dous.writeInt(rpp.getTime().getBytes().length);
 				dous.write(rpp.getTime().getBytes());
+				dous.writeInt(rpp.getCost());
 				dous.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			break;
+		case TypeConfig.TYPE_REQUEST://各种请求
+			try {
+				dous.writeByte(TypeConfig.TYPE_REQUEST);
+				dous.writeByte(TypeConfig.REQUEST_GET_QEQUESTS);
+				dous.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			break;
+			
+			
+			
 		}
 		return 1;
 	}
