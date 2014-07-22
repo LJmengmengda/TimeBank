@@ -44,17 +44,20 @@ public class Client_Message {
 	public   int Quryuser(String username,String password) throws Exception{
 		
 		Statement sta=con.createStatement();
-		
-		String perform="select * from UserMessage  where username=?,userpassword=?";
+		System.out.println("~~~~~~~AAAAAAAAAAAAA~~~~");
+		String perform="select * from UserMessage  where username=\'"+username+"\'and userpassword=\'"+password+"\'";
 		
 		ResultSet res=sta.executeQuery(perform);
-		System.out.println("在执行执行了登陆的验证操作~~~~");
+		System.out.println("~~~~~~~ABBBBBBBBBBBBBBBBBBBb~~~");
+		//��ʼ��������������
 		
 		int ID=0;
-		
 		while(res.next()){
-			ID=res.getInt(0);
+			ID=res.getInt(1);
+			System.out.println(res.getString(1)+"����������������"+res.getString(2)+
+					"����������������"+res.getString(3));
 		}
+		System.out.println("ID是："+ID+"~~~~~~~~~~~");
 		return ID;
 	}
 	
@@ -76,6 +79,30 @@ public class Client_Message {
 					"����������������"+res.getString(3));
 		}
 	}
+	
+	
+	
+	public   String QuryUserName(int id) throws Exception{
+		///ͨ�����Ӷ�����SQL����
+		Statement sta=con.createStatement();
+		//����Ҫִ�е�SQl���
+		String perform="select * from UserMessage where id="+id;
+		///��ʼִ��SQL���,���ҷ���һ�����
+		ResultSet res=sta.executeQuery(perform);
+		System.out.println("���"+"����������������"+"�˺�"+"����������������"+"����");
+		//��ʼ��������������
+		
+		String name="";
+		while(res.next()){
+			name=res.getString(2);
+			System.out.println(res.getString(1)+"����������������"+res.getString(2)+
+					"����������������"+res.getString(3));
+		}
+		
+		return name;
+	}
+	
+	
 	
 	///返回该表格的信息总数
 	public int getCount() throws SQLException{
