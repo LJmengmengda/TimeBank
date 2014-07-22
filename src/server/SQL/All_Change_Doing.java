@@ -8,15 +8,15 @@ import java.sql.Statement;
 
 public class All_Change_Doing {
 	
-	public static All_Change_Doing all_change_doing=new All_Change_Doing();
+	
 
-	private All_Change_Doing(){
+	public  All_Change_Doing(){
 		//������ݿ�ĵ�ַ���û�������
 		String url="jdbc:mysql://localhost:3306/sqltest";
 		String username="root";
 		String userpassword="123456";
 		//������Ӷ���
-		Connection con=All_Change_Doing.Createcon(url, username, userpassword);
+		con=All_Change_Doing.Createcon(url, username, userpassword);
 		
 		
 	}

@@ -9,10 +9,16 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
+import server.backup.Resquestlist.requestListProcessor;
 import server.backup.login.LoginProcessor;
+import server.backup.requestBook.requestBookProcessor;
+import server.backup.requestPublis.RequestPublishProcessor;
 import server.backup.signup.SignProcessors;
-import server.common.packages.ServerConfig;
+import server.common.packages.ClientRequestListPackage02A;
 import client.common.packages.LoginPackage;
+import client.common.packages.RequestPackage;
+import client.common.packages.RequestPublishPackage;
+import client.common.packages.RequestReceivePackage;
 import client.common.packages.SignupPackage;
 import client.common.packages.TypeConfig;
 
@@ -24,10 +30,59 @@ public class Receiver extends Thread{
 
 
 
-	int ID ;
-	Socket s;
-	public DataOutputStream dos;
-	public DataInputStream dis;
+	private int ID ;
+	private Socket s;
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	public Socket getS() {
+		return s;
+	}
+
+	public void setS(Socket s) {
+		this.s = s;
+	}
+
+	public DataOutputStream getDos() {
+		return dos;
+	}
+
+	public void setDos(DataOutputStream dos) {
+		this.dos = dos;
+	}
+
+	public DataInputStream getDis() {
+		return dis;
+	}
+
+	public void setDis(DataInputStream dis) {
+		this.dis = dis;
+	}
+
+	public InputStream getInput() {
+		return input;
+	}
+
+	public void setInput(InputStream input) {
+		this.input = input;
+	}
+
+	public OutputStream getOutput() {
+		return output;
+	}
+
+	public void setOutput(OutputStream output) {
+		this.output = output;
+	}
+
+
+	private DataOutputStream dos;
+	private DataInputStream dis;
 	private InputStream input;
 	private OutputStream output;
 	/**
@@ -46,6 +101,7 @@ public class Receiver extends Thread{
 	public void run(){
 		while(true){
 			try {
+				sleep(20);
 				this.readAllMessage();
 				
 			} catch (Exception e) {
@@ -106,12 +162,51 @@ public class Receiver extends Thread{
 				Hong.Receiverlist.add(this);//把这个线程添加到队列里面去
 			}
 			
-		}else if(b==0x03){
+		}else if(b==TypeConfig.TYPE_REQUEST_PUBLISH){
+			System.out.println("这是用户发布需求的的信息");
+//			int userID=dis.readInt();
+			int placelen=dis.readInt();
+			String place=this.Readbytes(dis, placelen);
+			int contentlen=dis.readInt();
+			String content=this.Readbytes(dis, contentlen);
+			int timelen=dis.readInt();
+			String time=this.Readbytes(dis, timelen);
+			int cost=dis.readInt();
+			System.out.println("发布的信息的信息读取完毕~");
+			System.out.println("信息分别是"+ID+"~"+place+"~"+content+"~"
+					+time+"~"+cost+"~");
 			
-		}else if(b==0x04){
+			RequestPublishPackage pk=new RequestPublishPackage(ID,place,content,cost,time);
 			
-		}else if(b==0x05){
+			RequestPublishProcessor rp=new RequestPublishProcessor();
+			rp.process(pk, dos);
 			
+			
+		}else if(b==TypeConfig.TYPE_REQUEST_RECEIVE){
+			System.out.println("这是用户接受需求的的信息");
+			int requestID=dis.readInt();
+			int timelen=dis.readInt();
+			String time=this.Readbytes(dis, timelen);
+			
+//			int userID=dis.readInt();
+			System.out.println("接受的信息的信息读取完毕~");
+			RequestReceivePackage rp=new RequestReceivePackage(requestID,time,ID);
+			
+			requestBookProcessor bp=new requestBookProcessor();
+			
+			bp.process(rp, dos);
+			
+		}
+		////这是客户机请求列表的信息
+		else if(b==TypeConfig.TYPE_REQUEST){
+			
+			byte bb=dis.readByte();
+
+			RequestPackage r=new RequestPackage(bb);
+			r.setID(ID);
+			
+			requestListProcessor rp=new requestListProcessor();
+			rp.process(r, dos);
 		}
 		
 		

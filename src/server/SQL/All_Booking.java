@@ -4,21 +4,22 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class All_Booking {
 
 	
 	
-	public static All_Booking all_booking=new All_Booking();
+	
 
-	private All_Booking(){
+	public All_Booking(){
 		//������ݿ�ĵ�ַ���û�������
-		String url="jdbc:mysql://localhost:3306/sqltest";
+		String url="jdbc:mysql://localhost:3308/timebank";
 		String username="root";
 		String userpassword="123456";
 		//������Ӷ���
-		Connection con=All_Booking.Createcon(url, username, userpassword);
+		con=All_Booking.Createcon(url, username, userpassword);
 		
 		
 	}
@@ -47,7 +48,7 @@ public class All_Booking {
 		///ͨ�����Ӷ�����SQL����
 		Statement sta=con.createStatement();
 		//����Ҫִ�е�SQl���
-		String perform="select * from user";
+		String perform="select * from AllBooking";
 		///��ʼִ��SQL���,���ҷ���һ�����
 		ResultSet res=sta.executeQuery(perform);
 		System.out.println("���"+"����������������"+"�˺�"+"����������������"+"����");
@@ -59,11 +60,76 @@ public class All_Booking {
 	}
 	
 	
+	
+	
+	///返回该表格的信息总数
+	public int getCount() throws SQLException{
+//	方法1：	
+//		Statement sta=con.createStatement();
+//		
+//		String s="select count(*) from AllBooking as countNumber";
+//		ResultSet res=sta.executeQuery(s);
+//		int count=0;
+//		while(res.next()){
+//			count=res.getInt(0);
+//		}
+//		return 0;
+		
+		
+	//方法2：	
+		Statement sta=con.createStatement();
+		
+		String perform="select * from AllBooking";
+		
+		ResultSet res=sta.executeQuery(perform);
+		
+		int count=0;
+		while(res.next()){
+			count++;
+		}
+		return count;
+		
+	}
+	
+	
+	
+	///向用户信息数据库里面添加一个新的用户信息~~
+	public   int Adduser(int userID,int Request_UserID) throws Exception{
+		
+		
+		
+		//����Ҫִ�е�SQl���
+		String perform="insert into AllBooking(id,userid,requestid) values(?,?,?)";
+		
+		
+		PreparedStatement psta=con.prepareStatement(perform);
+		System.out.print("每写入前已存在用户信息的总数长度是："+this.getCount());
+//ֵ
+		psta.setInt(1, this.getCount()+1);
+		psta.setInt(2, userID);
+		psta.setInt(3, Request_UserID);
+		
+		int count=psta.executeUpdate();
+		
+		if(count>0){
+			System.out.println("注册写入数据库成功~~");
+			
+			System.out.print("插入书记哭后的存在用户信息的总数长度是："+this.getCount());
+		}
+		else{
+			System.out.println("注册写入数据库不成功");
+			
+		}
+		return count;
+	}
+	
+	
+	
 	///��ӵķ���
 	public   void Adduser(Connection con,int id,String name,String password) throws Exception{
 		
 		//����Ҫִ�е�SQl���
-		String perform="insert into user(userid,username,userpassword) values(?,?,?)";
+		String perform="insert into AllBooking(userid,username,userpassword) values(?,?,?)";
 		
 		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
 		PreparedStatement psta=con.prepareStatement(perform);
@@ -88,7 +154,7 @@ public class All_Booking {
 	public   void updateuser(Connection con,int id,String name,String password) throws Exception{
 		
 		//����Ҫִ�е�SQl���
-		String perform="update user set username=?,userpassword=? where userid=?";
+		String perform="update AllBooking set username=?,userpassword=? where id=?";
 		
 		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
 		PreparedStatement psta=con.prepareStatement(perform);
@@ -113,7 +179,7 @@ public class All_Booking {
 	public   void deleteuser(Connection con,int id,String name,String password) throws Exception{
 		
 		//����Ҫִ�е�SQl���
-		String perform="delete from user where userid=?";
+		String perform="delete from AllBooking where userid=?";
 		
 		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
 		PreparedStatement psta=con.prepareStatement(perform);
@@ -131,7 +197,6 @@ public class All_Booking {
 			System.out.println(" ���ɾ����ݿ�ʧ��");
 		}
 	}
-	
 	
 	
 	//����һ��Connection�����Ӷ��󣬸���ֵΪnull

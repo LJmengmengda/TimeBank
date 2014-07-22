@@ -10,16 +10,14 @@ import java.sql.Statement;
 public class Client_Message {
 
 
-	
-	public static  Client_Message client_message=new Client_Message();
-	
+
 	public Client_Message(){
 		//������ݿ�ĵ�ַ���û�������
-		String url="jdbc:mysql://localhost:3306/BankOfTimeSQL";
+		String url="jdbc:mysql://localhost:3308/timebank";
 		String username="root";
 		String userpassword="123456";
 		//������Ӷ���
-		Connection con=Client_Message.Createcon(url, username, userpassword);
+		con=Client_Message.Createcon(url, username, userpassword);
 	}
 	
 //	public static void main(String[] args) throws Exception {
@@ -67,7 +65,7 @@ public class Client_Message {
 		///ͨ�����Ӷ�����SQL����
 		Statement sta=con.createStatement();
 		//����Ҫִ�е�SQl���
-		String perform="select * from user";
+		String perform="select * from UserMessage";
 		///��ʼִ��SQL���,���ҷ���һ�����
 		ResultSet res=sta.executeQuery(perform);
 		System.out.println("���"+"����������������"+"�˺�"+"����������������"+"����");
@@ -113,13 +111,13 @@ public class Client_Message {
 	public   int Adduser(String name,String password) throws Exception{
 		
 		//����Ҫִ�е�SQl���
-		String perform="insert into UserMessage(userid,username,userpassword) values(?,?,?)";
+		String perform="insert into UserMessage(id,username,userpassword) values(?,?,?)";
 		
 		
 		PreparedStatement psta=con.prepareStatement(perform);
-		System.out.print("每写入前已存在用户信息的总数长度是："+client_message.getCount());
+		System.out.print("每写入前已存在用户信息的总数长度是："+this.getCount());
 //ֵ
-		psta.setInt(1, client_message.getCount()+1);
+		psta.setInt(1, this.getCount()+1);
 		psta.setString(2, name);
 		psta.setString(3, password);
 		
@@ -128,20 +126,22 @@ public class Client_Message {
 		if(count>0){
 			System.out.println("注册写入数据库成功~~");
 			
-			System.out.print("插入书记哭后的存在用户信息的总数长度是："+client_message.getCount());
+			System.out.print("插入书记哭后的存在用户信息的总数长度是："+this.getCount());
 		}
 		else{
 			System.out.println("注册写入数据库不成功");
 			
 		}
+		System.out.println(count);
 		return count;
+		
 	}
 	
 	//�޸���ݿ�~~~
 	public static  void updateuser(int id,String name,String password) throws Exception{
 		
 		//����Ҫִ�е�SQl���
-		String perform="update user set username=?,userpassword=? where userid=?";
+		String perform="update UserMessage set username=?,userpassword=? where id=?";
 		
 		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
 		PreparedStatement psta=con.prepareStatement(perform);
@@ -166,7 +166,7 @@ public class Client_Message {
 	public static  void deleteuser(int id,String name,String password) throws Exception{
 		
 		//����Ҫִ�е�SQl���
-		String perform="delete from user where userid=?";
+		String perform="delete from UserMessage where id=?";
 		
 		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
 		PreparedStatement psta=con.prepareStatement(perform);

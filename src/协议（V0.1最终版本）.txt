@@ -15,7 +15,7 @@
 密碼	psw	string
 
 3 發佈需求	TYPE_REQUEST_PUBLISH	RequestPublicPackage
-发布者ID	publisherID	string
+发布者ID	publisherID	int
 地點	place	string
 內容	content	string
 時間	time	string
@@ -24,9 +24,10 @@
 4 接受需求	TYPE_REQUEST_RECEIVE	RequestReceivePackage
 需求的ID号	requestID	int
 时间	time	string
-接受需求的ID	receiverID	int
+接受者需求的ID	receiverID	int
 
 5 获得需求列表 请求	TYPE_REQUEST	RequestPackage
+需求的ID号	requestID	int
 请求类型	requesttype	byte
 
 服务器到客户机

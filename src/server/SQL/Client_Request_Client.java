@@ -8,15 +8,15 @@ import java.sql.Statement;
 
 public class Client_Request_Client {
 	
-	public static Client_Request_Client clint_request_client=new Client_Request_Client();
 
-	private Client_Request_Client(){
+
+	public Client_Request_Client(){
 		//������ݿ�ĵ�ַ���û�������
 		String url="jdbc:mysql://localhost:3306/sqltest";
 		String username="root";
 		String userpassword="123456";
 		//������Ӷ���
-		Connection con=Client_Request_Client.Createcon(url, username, userpassword);
+		con=Client_Request_Client.Createcon(url, username, userpassword);
 		
 		
 	}
