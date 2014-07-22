@@ -1,5 +1,6 @@
 完成了消息链表的编写，具体代码在client.common.PackageList
-所有功能需要发送消息给服务器就打包成相应数据包然后调用PackageList.add方法就行，发送由sender(唐梓毅写)来做
+所有功能需要发送消息给服务器就打包成相应数据包然后调用PackageList.add方法就行，
+发送由sender(唐梓毅写)来做
 
 完成了客户机发送给服务器的数据包各类
 client.common.packages下
