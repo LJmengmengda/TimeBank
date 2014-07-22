@@ -22,7 +22,7 @@ public class LoginProcessor implements IProcessor {
 			Launcher.iflogin = true;
 			// 发送用户信息请求
 			RequestPackage userdata = new RequestPackage(
-					TypeConfig.REQUEST_GET_USERDATA);
+					TypeConfig.REQUEST_GET_USERDATA,0);
 			Sender.packagelist.add(userdata);
 			Launcher.loginui.dispose();
 
@@ -37,5 +37,4 @@ public class LoginProcessor implements IProcessor {
 		}
 
 	}
-
 }

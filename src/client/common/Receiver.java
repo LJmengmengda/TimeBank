@@ -7,6 +7,7 @@ import client.backup.login.LoginProcessor;
 import client.backup.main.Launcher;
 import client.backup.signup.SignupProcessor;
 import server.common.packages.ClientRequestListPackage;
+import server.common.packages.ClientResultPackage;
 import server.common.packages.ServerConfig;
 import server.common.packages.LoginRequestPackage;
 import server.common.packages.SignRequestPackage;
@@ -80,6 +81,7 @@ public class Receiver extends Thread {
 								requestID, new String(time),
 								new String(content));
 						Launcher.mainui.requestList.add(r);
+						System.out.println("接收到服务器的");
 					}
 					
 					// 发布需求
@@ -87,6 +89,7 @@ public class Receiver extends Thread {
 					System.out.println("接收到服务器发来的type" + type);
 					byte resultType = dins.readByte();
 					byte state = dins.readByte();
+					ClientResultPackage result = new ClientResultPackage(state, resultType);
 					
 				}
 			} catch (IOException e) {

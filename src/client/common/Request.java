@@ -10,6 +10,7 @@ public class Request {
 	private int requestID;
 	private String time;
 	private String content;
+	
 	/**
 	 * @param userName  发布用户名
 	 * @param requestID	需求ID

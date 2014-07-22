@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -12,7 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import client.backup.main.Launcher;
 import client.common.Request;
+import client.common.packages.RequestPackage;
+import client.common.packages.TypeConfig;
 
 /**
  * 主界面
@@ -38,7 +43,20 @@ public class MainUI extends JFrame {
 	public static void main(String[] args) {
 		MainUI ui = new MainUI();
 		requestList = new ArrayList<Request>();
+		ui.jbRequest.addActionListener(l);
 	}
+	private static ActionListener l = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			String com = e.getActionCommand();
+			
+				System.out.println("点击了租赁");
+				Launcher.sender.send(new RequestPackage(TypeConfig.REQUEST_GET_QEQUESTS, 0));
+			
+		}
+	};
 
 	public MainUI() {
 
