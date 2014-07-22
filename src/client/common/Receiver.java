@@ -62,33 +62,41 @@ public class Receiver extends Thread {
 					signupprocessor.process(signuppack);
 					// 获得需求列表请求
 				} else if (type == ServerConfig.CLIENT_REQUEST_LIST_REQUEST) {
-					//TODO 为了简化操作，我暂时避开processor，直接丢request对象到mainUI就好，日后可能还要改
+					// TODO 为了简化操作，我暂时避开processor，直接丢request对象到mainUI就好，日后可能还要改
 					System.out.println("接收到服务器发来的type" + type);
 					int total = dins.readInt();
 					for (int i = 0; i < total; i++) {
+
 						int usernamelength = dins.readInt();
 						byte[] username = new byte[usernamelength];
 						dins.read(username);
+
 						int requestID = dins.readInt();
+
 						int timelength = dins.readInt();
 						byte[] time = new byte[timelength];
 						dins.read(time);
+
 						int contentlength = dins.readInt();
 						byte[] content = new byte[contentlength];
 						dins.read(content);
+
 						int cost = dins.readInt();
+
 						Request r = new Request(new String(username),
 								requestID, new String(time),
-								new String(content),cost);
-						Launcher.mainui.requestList.add(r);
+								new String(content), cost);
+
+						Launcher.mainui.requestList.get(i).change(r);
+						Launcher.mainui.requestPanelList.get(i).change(r);
 					}
-					
+
 					// 发布需求
 				} else if (type == ServerConfig.CLIENT_RESULT_PACKAGE_PUBLISH_MESSAGE) {
 					System.out.println("接收到服务器发来的type" + type);
 					byte resultType = dins.readByte();
 					byte state = dins.readByte();
-					
+
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

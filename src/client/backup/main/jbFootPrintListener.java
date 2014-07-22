@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
  * @author 徐意
  *
  */
-public class jbWantedListener implements ActionListener{
+public class jbFootPrintListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("出租");

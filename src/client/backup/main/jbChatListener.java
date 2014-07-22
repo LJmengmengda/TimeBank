@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
  * @author 徐意
  *
  */
-public class jbNewsListener implements ActionListener{
+public class jbChatListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

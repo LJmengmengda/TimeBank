@@ -14,19 +14,19 @@ public class MainUIListener extends MouseAdapter{
 	}
 	
 	  public void mouseClicked(MouseEvent e) {
-		  if(e.getSource().equals(mainui.getP1().getDetail())){
+		  if(e.getSource().equals(mainui.requestPanelList.get(0).getDetail())){
 			  System.out.println("aaaaa");
 			  //TODO 增加相关详细数据窗体创建
-		  }else if(e.getSource().equals(mainui.getP2().getDetail())){
+		  }else if(e.getSource().equals(mainui.requestPanelList.get(1).getDetail())){
 			  System.out.println("bbbbb");
 			  //TODO 增加相关详细数据窗体创建
-		  }else if(e.getSource().equals(mainui.getP3().getDetail())){
+		  }else if(e.getSource().equals(mainui.requestPanelList.get(2).getDetail())){
 			  System.out.println("ccccc");
 			  //TODO 增加相关详细数据窗体创建
-		  }else if(e.getSource().equals(mainui.getP4().getDetail())){
+		  }else if(e.getSource().equals(mainui.requestPanelList.get(3).getDetail())){
 			  System.out.println("ddddd");
 			  //TODO 增加相关详细数据窗体创建
-		  }else if(e.getSource().equals(mainui.getP5().getDetail())){
+		  }else if(e.getSource().equals(mainui.requestPanelList.get(4).getDetail())){
 			  System.out.println("eeeee");
 			  //TODO 增加相关详细数据窗体创建
 		  }else if(e.getSource().equals(mainui.getLarrow())){

@@ -34,11 +34,8 @@ public class SignupListener implements ActionListener {
 								.getUserNameField().getText(), new String(parent
 								.getPassWordField1().getPassword()));
 						
-						System.out.println(parent.getUserNameField().getText());
-						System.out.println((parent.getPassWordField1().getPassword()));
 						
 						Sender.packagelist.add(signuppack);
-						System.out.println("add");
 					}// 两次输入结果不相同
 					else {
 		

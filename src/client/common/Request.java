@@ -25,6 +25,14 @@ public class Request {
 		this.cost = cost;
 	}
 	
+	public void change(Request r){
+		this.userName = r.userName;
+		this.requestID = r.requestID;
+		this.time = r.time;
+		this.content = r.content;
+		this.cost = r.cost;
+	}
+	
 	public String getUserName() {
 		return userName;
 	}

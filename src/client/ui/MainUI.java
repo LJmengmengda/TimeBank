@@ -12,11 +12,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import client.backup.main.Launcher;
 import client.backup.main.MainUIListener;
 import client.backup.main.jbMeListener;
-import client.backup.main.jbNewsListener;
+import client.backup.main.jbChatListener;
 import client.backup.main.jbRequestListener;
-import client.backup.main.jbWantedListener;
+import client.backup.main.jbFootPrintListener;
 import client.common.Request;
 
 /**
@@ -29,31 +30,38 @@ public class MainUI extends JFrame {
 
 	private JButton jbPageUp;// 上一页
 	private JButton jbPageDown;// 下一页
-	private JButton jbRequest;//租赁
-	private JButton jbWanted;//出租
-	private JButton jbNews;//消息
+	private JButton jbRequest;//需求
+	private JButton jbFootPrint;//足迹
+	private JButton jbAddRequest;//增加
+	private JButton jbChat;//对话
 	private JButton jbMe;//我
 	private JButton jbSetting;//设置
 	
 	private JLabel Larrow;
 	private JLabel Rarrow;
 	
-	private RequestPanel requestPanel1;
-	private RequestPanel requestPanel2;
-	private RequestPanel requestPanel3;
-	private RequestPanel requestPanel4;
-	private RequestPanel requestPanel5;
-	
 	MainUIListener mainuilistener;
 
 	public static ArrayList<Request> requestList;
+	public static ArrayList<RequestPanel> requestPanelList;
 	
-	public static void main(String[] args) {
-		MainUI ui = new MainUI();
-		requestList = new ArrayList<Request>();
-	}
+//	public static void main(String[] args) {
+//		
+//		MainUI ui = new MainUI();
+//		
+//	}
 
 	public MainUI() {
+		
+
+		requestPanelList = new ArrayList<RequestPanel>();
+		requestList = new ArrayList<Request>();
+		Request r = new Request("0", 0, "0", "0", 0);
+		requestList.add(r);
+		requestList.add(r);
+		requestList.add(r);
+		requestList.add(r);
+		requestList.add(r);
 
 		this.setSize(350, 600);
 		this.setTitle("时间银行");
@@ -66,6 +74,7 @@ public class MainUI extends JFrame {
 		this.setIconImage(new ImageIcon("images/logo3.png").getImage());// 设置窗体的图标
 		
 		mainuilistener = new MainUIListener(this);
+		
 		
 		
 		// 北边面板
@@ -105,19 +114,22 @@ public class MainUI extends JFrame {
 		// 设置下方面板的尺寸
 		southPanel.setPreferredSize(new Dimension(350, 60));
 		// 添加按钮
-		 jbRequest = new JButton("租凭");
+		jbRequest = new JButton("需求");
 		southPanel.add(jbRequest);
-		 jbWanted = new JButton("出租");
-		southPanel.add(jbWanted);
-		 jbNews = new JButton("消息");
-		southPanel.add(jbNews);
-		 jbMe = new JButton("我");
+		jbFootPrint = new JButton("足迹");
+		southPanel.add(jbFootPrint);
+		jbAddRequest = new JButton("+");
+		southPanel.add(jbAddRequest);
+		jbChat = new JButton("对话");
+		southPanel.add(jbChat);
+		jbMe = new JButton("我");
 		southPanel.add(jbMe);
+		
 	
 		//给各个按钮加上监听器
 		jbRequest.addActionListener(new jbRequestListener());
-		jbWanted.addActionListener(new jbWantedListener());
-		jbNews.addActionListener(new jbNewsListener());
+		jbFootPrint.addActionListener(new jbFootPrintListener());
+		jbChat.addActionListener(new jbChatListener());
 		jbMe.addActionListener(new jbMeListener());
 		
 		southPanel.setOpaque(false);
@@ -139,25 +151,31 @@ public class MainUI extends JFrame {
 		f.setVgap(2);
 		centerPanel.setLayout(f);
 		
-		Request r = new Request("逗比", 1, "2014.7.21", "需求一逗比共商逗比大业",5);
 		
-		requestPanel1 = new RequestPanel(r);
+		
+		RequestPanel requestPanel1 = new RequestPanel(requestList.get(0));
+		requestPanelList.add(requestPanel1);
 		centerPanel.add(requestPanel1);
 		requestPanel1.getDetail().addMouseListener(mainuilistener);
 		
-		requestPanel2 = new RequestPanel(r);
+		RequestPanel requestPanel2 = new RequestPanel(requestList.get(1));
+		requestPanelList.add(requestPanel2);
 		centerPanel.add(requestPanel2);
 		requestPanel2.getDetail().addMouseListener(mainuilistener);
 		
-		requestPanel3 = new RequestPanel(r);
+		
+		RequestPanel requestPanel3 = new RequestPanel(requestList.get(2));
+		requestPanelList.add(requestPanel3);
 		centerPanel.add(requestPanel3);
 		requestPanel3.getDetail().addMouseListener(mainuilistener);
 		
-		requestPanel4 = new RequestPanel(r);
+		RequestPanel requestPanel4 = new RequestPanel(requestList.get(3));
+		requestPanelList.add(requestPanel4);
 		centerPanel.add(requestPanel4);
 		requestPanel4.getDetail().addMouseListener(mainuilistener);
 		
-		requestPanel5 = new RequestPanel(r);
+		RequestPanel requestPanel5 = new RequestPanel(requestList.get(4));
+		requestPanelList.add(requestPanel5);
 		centerPanel.add(requestPanel5);
 		requestPanel5.getDetail().addMouseListener(mainuilistener);
 		return centerPanel;
@@ -243,19 +261,19 @@ public class MainUI extends JFrame {
 	}
 
 	public JButton getJbWanted() {
-		return jbWanted;
+		return jbFootPrint;
 	}
 
 	public void setJbWanted(JButton jbWanted) {
-		this.jbWanted = jbWanted;
+		this.jbFootPrint = jbWanted;
 	}
 
 	public JButton getJbNews() {
-		return jbNews;
+		return jbChat;
 	}
 
 	public void setJbNews(JButton jbNews) {
-		this.jbNews = jbNews;
+		this.jbChat = jbNews;
 	}
 
 	public JButton getJbMe() {
@@ -290,51 +308,5 @@ public class MainUI extends JFrame {
 		Rarrow = rarrow;
 	}
 
-	public RequestPanel getP1() {
-		return requestPanel1;
-	}
 
-	public void setP1(RequestPanel p1) {
-		this.requestPanel1 = p1;
-	}
-
-	public RequestPanel getP2() {
-		return requestPanel2;
-	}
-
-	public void setP2(RequestPanel p2) {
-		this.requestPanel2 = p2;
-	}
-
-	public RequestPanel getP3() {
-		return requestPanel3;
-	}
-
-	public void setP3(RequestPanel p3) {
-		this.requestPanel3 = p3;
-	}
-
-	public RequestPanel getP4() {
-		return requestPanel4;
-	}
-
-	public void setP4(RequestPanel p4) {
-		this.requestPanel4 = p4;
-	}
-
-	public RequestPanel getP5() {
-		return requestPanel5;
-	}
-
-	public void setP5(RequestPanel p5) {
-		this.requestPanel5 = p5;
-	}
-
-	public static ArrayList<Request> getRequestList() {
-		return requestList;
-	}
-
-	public static void setRequestList(ArrayList<Request> requestList) {
-		MainUI.requestList = requestList;
-	}
 }

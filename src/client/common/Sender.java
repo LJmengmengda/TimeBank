@@ -37,7 +37,6 @@ public class Sender extends Thread {
 				ClientPackage p = packagelist.getHead().p;
 				this.send(p);
 				packagelist.delete();
-				System.out.println("del");
 			}
 			//TODO 弄清楚休眠的作用
 			try {

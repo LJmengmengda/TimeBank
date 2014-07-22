@@ -1,11 +1,9 @@
 package client.ui;
 
 import java.awt.Dimension;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import client.common.Request;
 
 
@@ -26,7 +24,6 @@ public class RequestPanel extends JPanel{
 	
 	public RequestPanel(Request r){
 		this.setPreferredSize(new Dimension(280,90));
-//		this.setBackground(Color.white);
 		this.setLayout(null);
 		
 		

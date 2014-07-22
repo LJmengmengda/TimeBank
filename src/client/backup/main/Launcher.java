@@ -72,7 +72,7 @@ public class Launcher {
 	// 主函数入口
 	public static void main(String[] args) {
 		Launcher l = new Launcher();
-		// 连接到服务器
+		// 连接到服务器192.168.0.117
 		if (l.connect2server("192.168.0.117", 9090) > 0) {
 			// 初始化sender与receiver
 			l.initSenderAndReceiver();
