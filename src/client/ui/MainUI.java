@@ -13,6 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import client.backup.main.MainUIListener;
+import client.backup.main.jbMeListener;
+import client.backup.main.jbNewsListener;
+import client.backup.main.jbRequestListener;
+import client.backup.main.jbWantedListener;
 import client.common.Request;
 
 /**
@@ -110,6 +114,12 @@ public class MainUI extends JFrame {
 		 jbMe = new JButton("我");
 		southPanel.add(jbMe);
 	
+		//给各个按钮加上监听器
+		jbRequest.addActionListener(new jbRequestListener());
+		jbWanted.addActionListener(new jbWantedListener());
+		jbNews.addActionListener(new jbNewsListener());
+		jbMe.addActionListener(new jbMeListener());
+		
 		southPanel.setOpaque(false);
 		return southPanel;
 	}
