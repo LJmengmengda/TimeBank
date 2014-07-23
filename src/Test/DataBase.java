@@ -43,7 +43,7 @@ public class DataBase {
 		
 		DataBase d=new DataBase();
 		
-		d.Adduser("qq","qq");
+//		d.Adduser("aa","qq");
 		
 //		System.out.print("~~~All_Booking的总数是：~~~~~`"+d.getCount());
 //		for(int i=10;i<=20;i++){
@@ -61,8 +61,8 @@ public class DataBase {
 		
 		System.out.print(per);
 //		
-		int a=Quryuser("asd","qwe");
-		System.out.print("~~~~~~用户名的ID是~~~~~~~`"+a*2);
+		int a=Quryuser("qq","qq");
+		System.out.print("~~~~~~用户名的ID是~~~~~~~`"+a);
 		
 	}
 	

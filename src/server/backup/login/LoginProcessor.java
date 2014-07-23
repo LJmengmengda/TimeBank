@@ -22,12 +22,9 @@ public class LoginProcessor implements IProcessor{
 		String pwd = lp.getPwd();
 		try {
 			int ID=0;
-			
-			
-			Client_Message c=new Client_Message();
-			
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			//通过查询 服务器数据库的这两个值来返回用户的ID是否存在~存在的话ID不为 0。不存在继续为0
-			ID = c.Quryuser(username, pwd);
+			ID = SQL_Common.client_message.Quryuser(username, pwd);
 //			ID = 得到用户的ID号码的函数
 			
 			if(ID>0){
