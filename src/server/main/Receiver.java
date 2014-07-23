@@ -202,7 +202,7 @@ public class Receiver extends Thread{
 			
 			byte bb=dis.readByte();
 
-			RequestPackage r=new RequestPackage(bb);
+			RequestPackage r=new RequestPackage(bb,ID);
 			r.setID(ID);
 			
 			requestListProcessor rp=new requestListProcessor();

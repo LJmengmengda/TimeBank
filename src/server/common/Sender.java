@@ -90,8 +90,8 @@ public class Sender {
 			ArrayList<Request> list=cp.getList();
 			for(int i=0;i<list.size();i++){
 				Request r=list.get(i);
-				dos.writeInt(r.getStore_id());
-				dos.writeInt(r.getUser_id());
+				dos.writeInt(r.getRequestID());
+				dos.write(r.getUserName().getBytes());
 				dos.write(r.getPlace().getBytes());
 				dos.write(r.getContent().getBytes());
 				dos.write(r.getTime().getBytes());
