@@ -29,9 +29,9 @@ public class RequestPublishPackage extends ClientPackage {
 	 * @param time
 	 *            客户发表需求的时间
 	 */
-	public RequestPublishPackage(int ID, String title, String content, int cost,
+	public RequestPublishPackage(int publisherID, String title, String content, int cost,
 			String time) {
-		this.publisherID = ID;
+		this.publisherID = publisherID;
 		this.title = title;
 		this.content = content;
 		this.cost = cost;

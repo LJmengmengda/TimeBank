@@ -24,6 +24,9 @@ import client.ui.SignupUI;
 public class LoginListener implements ActionListener {
 	private LoginUI parent;
 
+	/**
+	 * @param parent 传入监听的界面
+	 */
 	public LoginListener(LoginUI parent) {
 		this.parent = parent;
 	}
@@ -34,7 +37,6 @@ public class LoginListener implements ActionListener {
 			if(ifblank()){
 				JOptionPane.showMessageDialog(parent, "输入不能为空");
 			}else{
-				// TODO　创建登陆数据包并加入消息队列
 				LoginPackage loginPack = new LoginPackage(parent
 						.getUserNameField().getText(), new String(parent
 						.getPassWordField().getPassword()));

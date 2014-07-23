@@ -25,8 +25,6 @@ public class SignupPackage extends ClientPackage{
 //		this.field = field;
 		
 		this.setType(TypeConfig.TYPE_SIGNUP);
-		//TODO 暂时标记为零
-		this.setID(0);
 	}
 
 	public String getUserName() {

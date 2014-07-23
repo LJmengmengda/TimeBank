@@ -20,6 +20,7 @@ public class LoginProcessor implements IProcessor {
 		LoginRequestPackage p = (LoginRequestPackage) sp;
 		if (p.getState() == ServerConfig.LOGIN_REQUEST_STATE_SUCCESS) {
 			Launcher.iflogin = true;
+		
 			// 发送用户信息请求
 			RequestPackage userdata = new RequestPackage(
 					TypeConfig.REQUEST_GET_USERDATA);
@@ -28,10 +29,12 @@ public class LoginProcessor implements IProcessor {
 			RequestPackage requestListdata = new RequestPackage(
 					TypeConfig.REQUEST_GET_QEQUESTS);
 			Sender.packagelist.add(requestListdata);
+			
 			//关闭登陆界面
 			Launcher.loginui.dispose();
 			// INIT 主界面第一次实例化
 			Launcher.mainui = new MainUI();
+			
 
 		} else if (p.getState() == ServerConfig.LOGIN_REQUEST_STATE_FAILURE) {
 			// 登陆失败处理
@@ -41,5 +44,4 @@ public class LoginProcessor implements IProcessor {
 		}
 
 	}
-
 }

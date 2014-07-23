@@ -10,19 +10,26 @@ public class Request {
 	private int requestID;
 	private String time;
 	private String content;
+	private String place;
 	private int cost;
 	/**
 	 * @param userName  发布用户名
 	 * @param requestID	需求ID
 	 * @param time		时间
 	 * @param content	内容
+	 * @param place		地点
 	 */
-	public Request(String userName, int requestID, String time, String content,int cost) {
+	public Request(String userName, int requestID, String time, String content,int cost,String place) {
 		this.userName = userName;
 		this.requestID = requestID;
 		this.time = time;
 		this.content = content;
 		this.cost = cost;
+		this.place = place;
+	}
+	
+	public String getPlace() {
+		return place;
 	}
 	
 	public void change(Request r){
@@ -33,6 +40,9 @@ public class Request {
 		this.cost = r.cost;
 	}
 	
+	public void setPlace(String place) {
+		this.place = place;
+	}
 	public String getUserName() {
 		return userName;
 	}

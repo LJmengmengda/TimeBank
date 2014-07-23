@@ -22,9 +22,10 @@
 額度	cost	int
 
 4 接受需求	TYPE_REQUEST_RECEIVE	RequestReceivePackage
-需求的ID号	requestID	int
-时间	time	string
 接受需求的ID	receiverID	int
+需求的ID号	requestID	int
+时间		time	string
+
 
 5 获得需求列表 请求	TYPE_REQUEST	RequestPackage
 请求类型	requesttype	byte
@@ -57,5 +58,7 @@
 	用户名	username	string
 	需求ID	requestID	int
 	时间	time	string
-	内容	con
+	内容	content
+	额度cost
+	地点string place
 	

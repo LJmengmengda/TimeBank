@@ -8,8 +8,11 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import client.common.PackageList;
 import client.common.Receiver;
 import client.common.Sender;
+import client.common.packages.RequestPackage;
+import client.common.packages.TypeConfig;
 import client.ui.LoginUI;
 import client.ui.MainUI;
 import client.ui.SignupUI;
@@ -73,7 +76,8 @@ public class Launcher {
 	public static void main(String[] args) {
 		Launcher l = new Launcher();
 		// 连接到服务器192.168.0.117
-		if (l.connect2server("192.168.0.117", 9090) > 0) {
+		if (l.connect2server("127.0.0.1", 9090) > 0) {
+			System.out.println("登录了");
 			// 初始化sender与receiver
 			l.initSenderAndReceiver();
 			// 弹出登录界面

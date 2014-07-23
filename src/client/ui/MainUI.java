@@ -46,9 +46,7 @@ public class MainUI extends JFrame {
 	public static ArrayList<RequestPanel> requestPanelList;
 	
 //	public static void main(String[] args) {
-//		
 //		MainUI ui = new MainUI();
-//		
 //	}
 
 	public MainUI() {
@@ -56,7 +54,7 @@ public class MainUI extends JFrame {
 
 		requestPanelList = new ArrayList<RequestPanel>();
 		requestList = new ArrayList<Request>();
-		Request r = new Request("0", 0, "0", "0", 0);
+		Request r = new Request("0",0,"0","0",0,"0");
 		requestList.add(r);
 		requestList.add(r);
 		requestList.add(r);
@@ -151,6 +149,8 @@ public class MainUI extends JFrame {
 		f.setVgap(2);
 		centerPanel.setLayout(f);
 		
+
+		Request r = new Request("逗比", 1, "2014.7.21", "需求一逗比共商逗比大业",5,"");
 		
 		
 		RequestPanel requestPanel1 = new RequestPanel(requestList.get(0));

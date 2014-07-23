@@ -6,7 +6,9 @@ import java.io.IOException;
 import client.backup.login.LoginProcessor;
 import client.backup.main.Launcher;
 import client.backup.signup.SignupProcessor;
+import client.ui.MainUI;
 import server.common.packages.ClientRequestListPackage;
+import server.common.packages.ClientResultPackage;
 import server.common.packages.ServerConfig;
 import server.common.packages.LoginRequestPackage;
 import server.common.packages.SignRequestPackage;
@@ -66,7 +68,7 @@ public class Receiver extends Thread {
 					System.out.println("接收到服务器发来的type" + type);
 					int total = dins.readInt();
 					for (int i = 0; i < total; i++) {
-
+						System.out.println(i);
 						int usernamelength = dins.readInt();
 						byte[] username = new byte[usernamelength];
 						dins.read(username);
@@ -83,19 +85,29 @@ public class Receiver extends Thread {
 
 						int cost = dins.readInt();
 
+						int placelength = dins.readInt();
+						byte[] place = new byte[placelength];
+						
 						Request r = new Request(new String(username),
 								requestID, new String(time),
-								new String(content), cost);
+								new String(content), cost,new String(place));
 
 						Launcher.mainui.requestList.get(i).change(r);
 						Launcher.mainui.requestPanelList.get(i).change(r);
+								
+						
+						System.out.println("创建了request");
+						System.out.println("接收到服务器的request"+r.getUserName()+	r.getRequestID()+ r.getTime());
+						Launcher.mainui.requestList.add(r);
 					}
+				
 
 					// 发布需求
 				} else if (type == ServerConfig.CLIENT_RESULT_PACKAGE_PUBLISH_MESSAGE) {
 					System.out.println("接收到服务器发来的type" + type);
 					byte resultType = dins.readByte();
 					byte state = dins.readByte();
+					ClientResultPackage result = new ClientResultPackage(state, resultType);
 
 				}
 			} catch (IOException e) {

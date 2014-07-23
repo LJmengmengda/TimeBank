@@ -60,7 +60,7 @@ public class RequestPanel extends JPanel{
 		this.time.setText(r.getTime());
 		this.time.setBounds(40, 70, 60, 20);
 		this.cost.setText(r.getCost()+"min");
-		this.cost.setBounds(260, 70, 80, 20);
+		this.cost.setBounds(240, 70, 80, 20);
 	}
 	
 	public void setUsername(JLabel username) {

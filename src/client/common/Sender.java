@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import client.backup.main.Launcher;
 import client.common.packages.LoginPackage;
+import client.common.packages.RequestPackage;
 import client.common.packages.RequestPublishPackage;
 import client.common.packages.SignupPackage;
 import client.common.packages.ClientPackage;
@@ -55,7 +56,6 @@ public class Sender extends Thread {
 			LoginPackage lp = (LoginPackage) p;
 			try {
 				dous.writeByte(TypeConfig.TYPE_LOGIN);
-				dous.writeInt(lp.getID());
 				dous.writeInt(lp.getUserName().getBytes().length);
 				dous.write(lp.getUserName().getBytes());
 				dous.writeInt(lp.getPwd().getBytes().length);
@@ -71,7 +71,6 @@ public class Sender extends Thread {
 			SignupPackage sp = (SignupPackage) p;
 			try {
 				dous.writeByte(TypeConfig.TYPE_SIGNUP);
-				dous.writeInt(sp.getID());
 				dous.writeInt(sp.getUserName().getBytes().length);
 				dous.write(sp.getUserName().getBytes());
 				dous.writeInt(sp.getPwd().getBytes().length);
@@ -105,7 +104,11 @@ public class Sender extends Thread {
 				e.printStackTrace();
 			}
 			break;
+		case TypeConfig.TYPE_REQUEST_RECEIVE://接收需求
+			//TODO　法送接收需求请求
+			break;
 		case TypeConfig.TYPE_REQUEST://各种请求
+			RequestPackage rp = (RequestPackage)p;
 			try {
 				dous.writeByte(TypeConfig.TYPE_REQUEST);
 				dous.writeByte(TypeConfig.REQUEST_GET_QEQUESTS);
