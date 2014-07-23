@@ -42,16 +42,61 @@ public class DataBase {
 		
 		
 		DataBase d=new DataBase();
-		for(int i=1;i<=10;i++){
-//			deletelist(con,10+i);
+		
+		d.Adduser("qq","qq");
+		
+//		System.out.print("~~~All_Booking的总数是：~~~~~`"+d.getCount());
+//		for(int i=10;i<=20;i++){
+////			deletelist(con,10+i);
 //			d.AddDDuser(i,i+1);
-			d.Addrequest(i,"A","B",i+1,"C");
+////			d.Addrequest(i,"A","B",i+1,"C");
+//		}
+//		System.out.print("~~~All_Booking的总数是：~~~~~`"+d.getCount());
+//		String perform="select id from UserMessage  where username=\'?\',userpassword=\'?\'";
+//		System.out.print(perform);
+//		
+//		
+		String per="insert into UserMessage(id,username,userpassword) values(?,\'?\',\'?\')";
+//		
+		
+		System.out.print(per);
+//		
+		int a=Quryuser("asd","qwe");
+		System.out.print("~~~~~~用户名的ID是~~~~~~~`"+a*2);
+		
+	}
+	
+	
+	///向用户信息数据库里面添加一个新的用户信息~~
+	public   int Adduser(String name,String password) throws Exception{
+		
+		//����Ҫִ�е�SQl���
+		String perform="insert into UserMessage(id,username,userpassword) values(?,?,?)";
+		
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAa"+ this.getCount());
+		PreparedStatement psta=con.prepareStatement(perform);
+		System.out.println("每写入前已存在用户信息的总数长度是："+ this.getCount());
+//ֵ
+		psta.setInt(1, this.getCount()+1);
+		psta.setString(2, name);
+		psta.setString(3, password);
+		
+		int count=psta.executeUpdate();
+		
+		if(count>0){
+			System.out.println("注册写入数据库成功~~");
+			
+			System.out.print("插入书记哭后的存在用户信息的总数长度是："+this.getCount()+1);
+		}
+		else{
+			System.out.println("注册写入数据库不成功");
+			
 		}
 		
-		
-		int a=Quryuser("qwe","asd");
-		System.out.print("~~~~~~用户名的ID是~~~~~~~`"+a);
+		//返回用户的建立的用户的ID号
+		return this.getCount()+1;
 	}
+	
 	
 	
 	///添加用户的信息
@@ -88,29 +133,29 @@ public class DataBase {
 	///返回该表格的信息总数
 	public int getCount() throws SQLException{
 //	方法1：	
-//		Statement sta=con.createStatement();
-//		
-//		String s="select count(*) from AllBooking as countNumber";
-//		ResultSet res=sta.executeQuery(s);
-//		int count=0;
-//		while(res.next()){
-//			count=res.getInt(0);
-//		}
-//		return 0;
+		Statement sta=con.createStatement();
+		
+		String s="select count(*) from usermessage as countNumber";
+		ResultSet res=sta.executeQuery(s);
+		int count=0;
+		while(res.next()){
+			count=res.getInt(1);
+		}
+		return count;
 		
 		
 	//方法2：	
-		Statement sta=con.createStatement();
-		
-		String perform="select * from UserRequestMessage";
-		
-		ResultSet res=sta.executeQuery(perform);
-		
-		int count=0;
-		while(res.next()){
-			count++;
-		}
-		return count;
+//		Statement sta=con.createStatement();
+//		
+//		String perform="select * from UserRequestMessage";
+//		
+//		ResultSet res=sta.executeQuery(perform);
+//		
+//		int count=0;
+//		while(res.next()){
+//			count++;
+//		}
+//		return count;
 		
 	}
 	

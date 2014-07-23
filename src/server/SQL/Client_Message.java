@@ -47,8 +47,8 @@ public class Client_Message {
 		
 		Statement sta=con.createStatement();
 		
-		String perform="select * from UserMessage  where username=?,userpassword=?";
-		
+		String perform="select id from UserMessage  where username=?,userpassword=?";
+		System.out.print(perform);
 		ResultSet res=sta.executeQuery(perform);
 		System.out.println("在执行执行了登陆的验证操作~~~~");
 		
@@ -101,7 +101,7 @@ public class Client_Message {
 	
 	
 	///返回该表格的信息总数
-	public int getCount() throws SQLException{
+	public  int getCount() throws SQLException{
 //	方法1：	
 //		Statement sta=con.createStatement();
 //		
@@ -136,7 +136,7 @@ public class Client_Message {
 		//����Ҫִ�е�SQl���
 		String perform="insert into UserMessage(id,username,userpassword) values(?,?,?)";
 		
-		
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		PreparedStatement psta=con.prepareStatement(perform);
 		System.out.print("每写入前已存在用户信息的总数长度是："+ this.getCount());
 //ֵ
@@ -149,13 +149,15 @@ public class Client_Message {
 		if(count>0){
 			System.out.println("注册写入数据库成功~~");
 			
-			System.out.print("插入书记哭后的存在用户信息的总数长度是："+this.getCount());
+			System.out.print("插入书记哭后的存在用户信息的总数长度是："+this.getCount()+1);
 		}
 		else{
 			System.out.println("注册写入数据库不成功");
 			
 		}
-		return count;
+		
+		//返回用户的建立的用户的ID号
+		return this.getCount()+1;
 	}
 	
 	//�޸���ݿ�~~~

@@ -2,6 +2,7 @@ package server.backup.signup;
 
 import java.io.DataOutputStream;
 
+import server.SQL.Client_Message;
 import server.SQL.SQL_Common;
 import server.common.IProcessor;
 import server.common.Sender;
@@ -27,8 +28,8 @@ public class SignProcessors implements IProcessor{
 				//写入数据库的函数调用
 				//返回的count也是写入时候的对数据库的对所有数据能过有影响的总数
 				//count在数值上也是ID
-				
-				int count=SQL_Common.client_message.Adduser(username, password);
+				Client_Message c=new Client_Message();
+				int count=c.Adduser(username, password);
 				
 				if(count>0){
 					System.out.println("注册成功~~");

@@ -11,7 +11,6 @@ public class Sever {
 			s.procession(9090);
 		
 	}
-
 	private void procession(int port) throws Exception {
 		
 		ServerSocket  ss=new ServerSocket (port);
