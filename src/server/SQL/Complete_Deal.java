@@ -9,15 +9,13 @@ import java.sql.Statement;
 public class Complete_Deal {
 
 	
-	public static Complete_Deal complete_deal=new Complete_Deal();
-
 	private Complete_Deal(){
 		//������ݿ�ĵ�ַ���û�������
 		String url="jdbc:mysql://localhost:3306/sqltest";
 		String username="root";
 		String userpassword="123456";
 		//������Ӷ���
-		Connection con=Complete_Deal.Createcon(url, username, userpassword);
+		con=Complete_Deal.Createcon(url, username, userpassword);
 		
 		
 	}

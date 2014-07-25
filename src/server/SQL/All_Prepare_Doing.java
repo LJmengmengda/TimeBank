@@ -8,15 +8,15 @@ import java.sql.Statement;
 
 public class All_Prepare_Doing {
 	
-	public static All_Prepare_Doing all_prepare_doing=new All_Prepare_Doing();
+	
 
-	private All_Prepare_Doing(){
+	public All_Prepare_Doing(){
 		//������ݿ�ĵ�ַ���û�������
 		String url="jdbc:mysql://localhost:3306/sqltest";
 		String username="root";
 		String userpassword="123456";
 		//������Ӷ���
-		Connection con=All_Prepare_Doing.Createcon(url, username, userpassword);
+		con=All_Prepare_Doing.Createcon(url, username, userpassword);
 		
 		
 	}
@@ -132,21 +132,21 @@ public class All_Prepare_Doing {
 	
 	
 	
-	//����һ��Connection�����Ӷ��󣬸���ֵΪnull
+	//连接数据库的连接对象作为全局变量
 	private static Connection con=null;
 	/**
-	 * ��������ʵ��һ�����Ӷ���
-	 * @param url������ݿ�ĵ�ַ
-	 * @param username��ݿ�ĵ�¼��
-	 * @param userpassword��ݿ�ĵ�½����
-	 * @return����һ���Ѿ�ʵ���Connection����
+	 * 实例化连接对象的方法
+	 * @param url  连接数据库的地址ַ
+	 * @param username
+	 * @param userpassword
+	 * @return 已经实例化的连接对象
 	 */
 	private static Connection Createcon(String url,String username,String userpassword){
 		if(con==null){
-			//����mySQL����,����ʵ��һ�������
+			//加载驱动
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
-				///ʵ����Ķ���,ָ��Ҫ���ӵ���ݿ��ַ���û�������
+				///实例化连接对象的方法
 				con=DriverManager.getConnection(url, username, userpassword);
 				
 			} catch (Exception e) {

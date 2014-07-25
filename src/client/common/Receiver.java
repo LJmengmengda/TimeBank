@@ -68,7 +68,9 @@ public class Receiver extends Thread {
 					System.out.println("接收到服务器发来的type" + type);
 					int total = dins.readInt();
 					for (int i = 0; i < total; i++) {
+						
 						System.out.println(i);
+						
 						int usernamelength = dins.readInt();
 						byte[] username = new byte[usernamelength];
 						dins.read(username);
@@ -87,6 +89,7 @@ public class Receiver extends Thread {
 
 						int placelength = dins.readInt();
 						byte[] place = new byte[placelength];
+						dins.read(place);
 						
 						Request r = new Request(new String(username),
 								requestID, new String(time),
@@ -98,7 +101,7 @@ public class Receiver extends Thread {
 						
 						System.out.println("创建了request");
 						System.out.println("接收到服务器的request"+r.getUserName()+	r.getRequestID()+ r.getTime());
-						Launcher.mainui.requestList.add(r);
+						
 					}
 				
 

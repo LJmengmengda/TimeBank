@@ -12,6 +12,7 @@ public class SignRequestPackage extends ServerPackage{
 		this.state = state;
 		
 		this.setType(ServerConfig.SIGN_REQUEST);
+		this.setSrc(0);
 	}
 
 	public void setState(byte state) {

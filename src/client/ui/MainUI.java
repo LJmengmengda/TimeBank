@@ -150,8 +150,6 @@ public class MainUI extends JFrame {
 		centerPanel.setLayout(f);
 		
 
-		Request r = new Request("逗比", 1, "2014.7.21", "需求一逗比共商逗比大业",5,"");
-		
 		
 		RequestPanel requestPanel1 = new RequestPanel(requestList.get(0));
 		requestPanelList.add(requestPanel1);

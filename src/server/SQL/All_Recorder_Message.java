@@ -9,15 +9,15 @@ import java.sql.Statement;
 public class All_Recorder_Message {
 
 	
-	public static All_Recorder_Message all_recorder_message=new All_Recorder_Message();
+	
 
-	private All_Recorder_Message(){
+	public  All_Recorder_Message(){
 		//������ݿ�ĵ�ַ���û�������
 		String url="jdbc:mysql://localhost:3306/sqltest";
 		String username="root";
 		String userpassword="123456";
 		//������Ӷ���
-		Connection con=All_Recorder_Message.Createcon(url, username, userpassword);
+		con=All_Recorder_Message.Createcon(url, username, userpassword);
 		
 		
 	}

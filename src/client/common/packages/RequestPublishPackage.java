@@ -46,7 +46,6 @@ public class RequestPublishPackage extends ClientPackage {
 
 	public String getTitle() {
 		return title;
-
 	}
 
 	public String getContent() {

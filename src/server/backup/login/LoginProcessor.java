@@ -3,13 +3,14 @@ package server.backup.login;
 import java.io.DataOutputStream;
 
 import server.SQL.Client_Message;
+import server.SQL.SQL_Common;
 import server.common.IProcessor;
 import server.common.Sender;
 import server.common.packages.LoginRequestPackage;
 import server.common.packages.ServerConfig;
 import server.common.packages.ServerPackage;
-import client.common.packages.LoginPackage;
 import client.common.packages.ClientPackage;
+import client.common.packages.LoginPackage;
 
 public class LoginProcessor implements IProcessor{
 
@@ -20,10 +21,13 @@ public class LoginProcessor implements IProcessor{
 		String username = lp.getUserName();
 		String pwd = lp.getPwd();
 		try {
-			int ID=1;
+			int ID=0;
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			//通过查询 服务器数据库的这两个值来返回用户的ID是否存在~存在的话ID不为 0。不存在继续为0
-//			ID = Client_Message.client_message.Quryuser(username, pwd);
-			if(ID!=0){
+			ID = SQL_Common.client_message.Quryuser(username, pwd);
+//			ID = 得到用户的ID号码的函数
+			
+			if(ID>0){
 				
 				System.out.println("登陆成功~~该用户存在~~ID是："+ID);
 				ServerPackage lo=new LoginRequestPackage(ID,ServerConfig.LOGIN_REQUEST_STATE_SUCCESS);
