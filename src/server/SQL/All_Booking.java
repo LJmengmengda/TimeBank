@@ -72,7 +72,7 @@ public class All_Booking {
 	
 	
 	///返回该表格的信息总数
-	public int getCount() throws SQLException{
+	public  int getCount() throws SQLException{
 //	方法1：	
 //		Statement sta=con.createStatement();
 //		

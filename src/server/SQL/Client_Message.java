@@ -15,7 +15,7 @@ public class Client_Message {
 
 	public Client_Message(){
 		//连接数据库的地址
-		String url="jdbc:mysql://localhost:3306/BankOfTimeSQL";
+		String url="jdbc:mysql://localhost:3308/TimeBank";
 		String username="root";
 		String userpassword="123456";
 		//获得连接对象
@@ -45,18 +45,36 @@ public class Client_Message {
 	//按照用戶名和密码来查询~~~用来对付登陆的操作~~
 	public  int Quryuser(String username,String password) throws Exception{
 		
+//		Statement sta=con.createStatement();
+//		
+//		String perform="select * from UserMessage  where username=?,userpassword=?";
+//		System.out.print(perform);
+//		ResultSet res=sta.executeQuery(perform);
+//		System.out.println("在执行执行了登陆的验证操作~~~~");
+//		
+//		int ID=0;
+//		
+//		while(res.next()){
+//			ID=res.getInt(1);
+//		}
+//		return ID;
+		
+		
 		Statement sta=con.createStatement();
-		
-		String perform="select * from UserMessage  where username=?,userpassword=?";
-		
+		System.out.println("~~~~~~~BBBBBBBBBBBBBBbB~~~~");
+		String perform="select * from UserMessage  where username=\'"+username+"\'and userpassword=\'"+password+"\'";
+		System.out.println(perform);
 		ResultSet res=sta.executeQuery(perform);
-		System.out.println("在执行执行了登陆的验证操作~~~~");
+		System.out.println("~~~~~~~AAAAAAAAAAAAA~~~~");
+		//��ʼ��������������
 		
 		int ID=0;
-		
 		while(res.next()){
-			ID=res.getInt(0);
+			ID=res.getInt(1);
+			System.out.println(res.getString(1)+"����������������"+res.getString(2)+
+					"����������������"+res.getString(3));
 		}
+		System.out.println("ID是："+ID+"~~~~~~~~~~~");
 		return ID;
 	}
 	
@@ -101,7 +119,7 @@ public class Client_Message {
 	
 	
 	///返回该表格的信息总数
-	public int getCount() throws SQLException{
+	public  int getCount() throws SQLException{
 //	方法1：	
 //		Statement sta=con.createStatement();
 //		
@@ -136,7 +154,8 @@ public class Client_Message {
 		//����Ҫִ�е�SQl���
 		String perform="insert into UserMessage(id,username,userpassword) values(?,?,?)";
 		
-		
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		System.out.print(con);
 		PreparedStatement psta=con.prepareStatement(perform);
 		System.out.print("每写入前已存在用户信息的总数长度是："+ this.getCount());
 //ֵ
@@ -149,13 +168,15 @@ public class Client_Message {
 		if(count>0){
 			System.out.println("注册写入数据库成功~~");
 			
-			System.out.print("插入书记哭后的存在用户信息的总数长度是："+this.getCount());
+			System.out.print("插入书记哭后的存在用户信息的总数长度是："+this.getCount()+1);
 		}
 		else{
 			System.out.println("注册写入数据库不成功");
 			
 		}
-		return count;
+		
+		//返回用户的建立的用户的ID号
+		return this.getCount()+1;
 	}
 	
 	//�޸���ݿ�~~~

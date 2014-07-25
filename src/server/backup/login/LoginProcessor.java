@@ -2,6 +2,7 @@ package server.backup.login;
 
 import java.io.DataOutputStream;
 
+import server.SQL.Client_Message;
 import server.SQL.SQL_Common;
 import server.common.IProcessor;
 import server.common.Sender;
@@ -21,6 +22,7 @@ public class LoginProcessor implements IProcessor{
 		String pwd = lp.getPwd();
 		try {
 			int ID=0;
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			//通过查询 服务器数据库的这两个值来返回用户的ID是否存在~存在的话ID不为 0。不存在继续为0
 			ID = SQL_Common.client_message.Quryuser(username, pwd);
 //			ID = 得到用户的ID号码的函数

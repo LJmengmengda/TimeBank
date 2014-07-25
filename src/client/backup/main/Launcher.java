@@ -77,6 +77,7 @@ public class Launcher {
 		Launcher l = new Launcher();
 		// 连接到服务器
 		if (l.connect2server("192.168.43.216", 9090) > 0) {
+		if (l.connect2server("localhost", 9090) > 0) {
 			System.out.println("登录了");
 			// 初始化sender与receiver
 			l.initSenderAndReceiver();

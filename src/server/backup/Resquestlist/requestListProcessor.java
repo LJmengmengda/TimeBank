@@ -53,7 +53,8 @@ public class requestListProcessor implements IProcessor{
 					 
 					 ///分别获得存储id，用户id，地点，内容，发表需求时间，预备金额
 					int store_id=SQL_Common.clintrequestneed.QuryUserIntMessages(i, 1);
-					 int user_id=SQL_Common.clintrequestneed.QuryUserIntMessages(i, 2); ///发布这条需求的ID
+					///发布这条需求的用户ID
+					 int user_id=SQL_Common.clintrequestneed.QuryUserIntMessages(i, 2); 
 					String username=SQL_Common.client_message.QuryuserName(user_id);
 					 String place=SQL_Common.clintrequestneed.QuryUserStringMessages(i, 3);
 					 String content=SQL_Common.clintrequestneed.QuryUserStringMessages(i, 4);

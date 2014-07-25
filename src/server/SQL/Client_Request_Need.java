@@ -14,7 +14,6 @@ import java.sql.Statement;
 public class Client_Request_Need {
 	
 
-
 	public Client_Request_Need(){
 		//连接数据库的地址
 		String url="jdbc:mysql://localhost:3308/timebank";
@@ -70,8 +69,21 @@ public class Client_Request_Need {
 		}
 		return count;
 		
+		
+	//方法3：
+//		Statement sta=con.createStatement();
+//		
+//		String perform="select id from UserRequestMessage";
+//		
+//		ResultSet res=sta.executeQuery(perform);
+//		
+//		int count=0;
+//		while(res.next()){
+//			count++;
+//		}
+//		return count;
+		
 	}
-	
 	
 	
 	///添加用户的信息
@@ -174,7 +186,7 @@ public class Client_Request_Need {
 		
 		Statement sta=con.createStatement();
 		
-		String perform="select * from UserRequestMessage where id="+ID;
+		String perform="select XXXX from UserRequestMessage where id="+ID;
 		
 		ResultSet res=sta.executeQuery(perform);
 	

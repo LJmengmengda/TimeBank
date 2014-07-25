@@ -101,7 +101,7 @@ public class Receiver extends Thread{
 	public void run(){
 		while(true){
 			try {
-				sleep(20);
+//				sleep(20);
 				this.readAllMessage();
 				
 			} catch (Exception e) {
@@ -208,7 +208,6 @@ public class Receiver extends Thread{
 			requestListProcessor rp=new requestListProcessor();
 			rp.process(r, dos);
 		}
-		
 		
 	}
 
