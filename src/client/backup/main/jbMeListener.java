@@ -12,7 +12,6 @@ public class jbMeListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 			System.out.println("我");
-		
 	}
 
 }

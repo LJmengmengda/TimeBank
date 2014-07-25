@@ -6,13 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * 客户机信息
+ * @author 纪德东
+ *
+ */
 public class Client_Message {
 
-
-	
-	
-	
 	public Client_Message(){
 		//连接数据库的地址
 		String url="jdbc:mysql://localhost:3306/BankOfTimeSQL";

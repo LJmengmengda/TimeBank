@@ -6,20 +6,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * 用户发布的需求列表
+ * @author 纪德东
+ *
+ */
 public class Client_Request_Need {
 	
 
 
 	public Client_Request_Need(){
-		//������ݿ�ĵ�ַ���û�������
+		//连接数据库的地址
 		String url="jdbc:mysql://localhost:3308/timebank";
 		String username="root";
 		String userpassword="123456";
-		//������Ӷ���
+		//实例化连接对象
 		con=Client_Request_Need.Createcon(url, username, userpassword);
-		
-		
 	}
 	
 //	public static void main(String[] args) throws Exception {
@@ -76,23 +78,23 @@ public class Client_Request_Need {
 	public   int Addrequest(int ID, String title, String content, int cost,
 			String time) throws Exception{
 		
-		//����Ҫִ�е�SQl���
+		//插入数据库的语句
 		String perform="insert into UserRequestMessage(id,userid,place,content,time,cost) " +
 				" values(?,?,?,?,?,?)";
 		
-		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
+		///ͨ获得预编译执行对象
 		PreparedStatement psta=con.prepareStatement(perform);
 		
-		//��ÿһ��ռλ��ָ��һ��ֵ
+		//设置问号的值ֵ
 		psta.setInt(1,this.getCount()+1);
 		psta.setInt(2, ID);
 		psta.setString(3, title);
 		psta.setString(4, content);
 		psta.setString(5, time);
 		psta.setInt(6, cost);
-		//ִ��SQl,���ҷ���Ӱ���˼�����ݵ�ͳ����Ŀ
+		//SQL的执行语句，每次执行完后，返回改变数据的条数
 		int count=psta.executeUpdate();
-		//���count����0��ʾ������ݳɹ�
+		//当有条数改变时，就输出插入数据库
 		if(count>0){
 			System.out.println(" 插入数据库成功");
 		}
@@ -182,106 +184,106 @@ public class Client_Request_Need {
 		}
 		return requestId;
 	}
-	///��ѯ��ݿ�������~~~~
-	public   void Quryuser(Connection con) throws Exception{
-		///ͨ�����Ӷ�����SQL����
-		Statement sta=con.createStatement();
-		//����Ҫִ�е�SQl���
-		String perform="select * from UserRequestMessage";
-		///��ʼִ��SQL���,���ҷ���һ�����
-		ResultSet res=sta.executeQuery(perform);
-		System.out.println("���"+"����������������"+"�˺�"+"����������������"+"����");
-		//��ʼ��������������
-		while(res.next()){
-			System.out.println(res.getString(1)+"����������������"+res.getString(2)+
-					"����������������"+res.getString(3));
-		}
-	}
+//	///��ѯ��ݿ�������~~~~
+//	public   void Quryuser(Connection con) throws Exception{
+//		///ͨ�����Ӷ�����SQL����
+//		Statement sta=con.createStatement();
+//		//����Ҫִ�е�SQl���
+//		String perform="select * from UserRequestMessage";
+//		///��ʼִ��SQL���,���ҷ���һ�����
+//		ResultSet res=sta.executeQuery(perform);
+//		System.out.println("���"+"����������������"+"�˺�"+"����������������"+"����");
+//		//��ʼ��������������
+//		while(res.next()){
+//			System.out.println(res.getString(1)+"����������������"+res.getString(2)+
+//					"����������������"+res.getString(3));
+//		}
+//	}
+	
+//	
+//	///��ӵķ���
+//	public   void Adduser(Connection con,int id,String name,String password) throws Exception{
+//		
+//		//����Ҫִ�е�SQl���
+//		String perform="insert into UserRequestMessage(userid,username,userpassword) values(?,?,?)";
+//		
+//		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
+//		PreparedStatement psta=con.prepareStatement(perform);
+//		
+//		//��ÿһ��ռλ��ָ��һ��ֵ
+//		psta.setInt(1, id);
+//		psta.setString(2, name);
+//		psta.setString(3, password);
+//		//ִ��SQl,���ҷ���Ӱ���˼�����ݵ�ͳ����Ŀ
+//		int count=psta.executeUpdate();
+//		//���count����0��ʾ������ݳɹ�
+//		if(count>0){
+//			System.out.println(" ��ݲ�����ݿ�ɹ�");
+//		}
+//		else{
+//			System.out.println(" ��ݲ�����ݿ�ʧ��");
+//			
+//		}
+//	}
+//	
+//	//�޸���ݿ�~~~
+//	public   void updateuser(Connection con,int id,String name,String password) throws Exception{
+//		
+//		//����Ҫִ�е�SQl���
+//		String perform="update UserRequestMessage set username=?,userpassword=? where userid=?";
+//		
+//		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
+//		PreparedStatement psta=con.prepareStatement(perform);
+//		
+//		//��ÿһ��ռλ��ָ��һ��ֵ
+//		psta.setString(1, name);
+//		psta.setString(2, password);
+//		psta.setInt(3, id);
+//		//ִ��SQl,���ҷ���Ӱ���˼�����ݵ�ͳ����Ŀ
+//		int count=psta.executeUpdate();
+//		//���count����0��ʾ������ݳɹ�
+//		if(count>0){
+//			System.out.println(" ��ݸ�����ݿ�ɹ�");
+//		}
+//		else{
+//			System.out.println(" ��ݸ�����ݿ�ʧ��");
+//			
+//		}
+//	}
+//	
+//	//ɾ�����~~~
+//	public   void deleteuser(Connection con,int id,String name,String password) throws Exception{
+//		
+//		//����Ҫִ�е�SQl���
+//		String perform="delete from UserRequestMessage where userid=?";
+//		
+//		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
+//		PreparedStatement psta=con.prepareStatement(perform);
+//		
+//		//��ÿһ��ռλ��ָ��һ��ֵ
+//		
+//		psta.setInt(1, id);
+//		//ִ��SQl,���ҷ���Ӱ���˼�����ݵ�ͳ����Ŀ
+//		int count=psta.executeUpdate();
+//		//���count����0��ʾ������ݳɹ�
+//		if(count>0){
+//			System.out.println(" ���ɾ����ݿ�ɹ�");
+//		}
+//		else{
+//			System.out.println(" ���ɾ����ݿ�ʧ��");
+//		}
+//	}
+//	
 	
 	
-	///��ӵķ���
-	public   void Adduser(Connection con,int id,String name,String password) throws Exception{
-		
-		//����Ҫִ�е�SQl���
-		String perform="insert into UserRequestMessage(userid,username,userpassword) values(?,?,?)";
-		
-		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
-		PreparedStatement psta=con.prepareStatement(perform);
-		
-		//��ÿһ��ռλ��ָ��һ��ֵ
-		psta.setInt(1, id);
-		psta.setString(2, name);
-		psta.setString(3, password);
-		//ִ��SQl,���ҷ���Ӱ���˼�����ݵ�ͳ����Ŀ
-		int count=psta.executeUpdate();
-		//���count����0��ʾ������ݳɹ�
-		if(count>0){
-			System.out.println(" ��ݲ�����ݿ�ɹ�");
-		}
-		else{
-			System.out.println(" ��ݲ�����ݿ�ʧ��");
-			
-		}
-	}
-	
-	//�޸���ݿ�~~~
-	public   void updateuser(Connection con,int id,String name,String password) throws Exception{
-		
-		//����Ҫִ�е�SQl���
-		String perform="update UserRequestMessage set username=?,userpassword=? where userid=?";
-		
-		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
-		PreparedStatement psta=con.prepareStatement(perform);
-		
-		//��ÿһ��ռλ��ָ��һ��ֵ
-		psta.setString(1, name);
-		psta.setString(2, password);
-		psta.setInt(3, id);
-		//ִ��SQl,���ҷ���Ӱ���˼�����ݵ�ͳ����Ŀ
-		int count=psta.executeUpdate();
-		//���count����0��ʾ������ݳɹ�
-		if(count>0){
-			System.out.println(" ��ݸ�����ݿ�ɹ�");
-		}
-		else{
-			System.out.println(" ��ݸ�����ݿ�ʧ��");
-			
-		}
-	}
-	
-	//ɾ�����~~~
-	public   void deleteuser(Connection con,int id,String name,String password) throws Exception{
-		
-		//����Ҫִ�е�SQl���
-		String perform="delete from UserRequestMessage where userid=?";
-		
-		///ͨ�����Ӷ�����Ԥ����ִ�е�SQL����
-		PreparedStatement psta=con.prepareStatement(perform);
-		
-		//��ÿһ��ռλ��ָ��һ��ֵ
-		
-		psta.setInt(1, id);
-		//ִ��SQl,���ҷ���Ӱ���˼�����ݵ�ͳ����Ŀ
-		int count=psta.executeUpdate();
-		//���count����0��ʾ������ݳɹ�
-		if(count>0){
-			System.out.println(" ���ɾ����ݿ�ɹ�");
-		}
-		else{
-			System.out.println(" ���ɾ����ݿ�ʧ��");
-		}
-	}
-	
-	
-	
-	//����һ��Connection�����Ӷ��󣬸���ֵΪnull
+	//实例化一个连接对象
 	private static Connection con=null;
 	/**
-	 * ��������ʵ��һ�����Ӷ���
-	 * @param url������ݿ�ĵ�ַ
-	 * @param username��ݿ�ĵ�¼��
-	 * @param userpassword��ݿ�ĵ�½����
-	 * @return����һ���Ѿ�ʵ���Connection����
+	 * 实例化连接对象的方法
+	 * @param url  连接数据库的地址ַ
+	 * @param username
+	 * @param userpassword
+	 * @return 已经实例化的连接对象
 	 */
 	private static Connection Createcon(String url,String username,String userpassword){
 		if(con==null){
